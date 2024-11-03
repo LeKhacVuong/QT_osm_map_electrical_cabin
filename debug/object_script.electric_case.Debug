@@ -1,0 +1,16 @@
+debug/electric_case_add.o
+debug/fake_mqtt.o
+debug/mqtt.o
+debug/mqtt_pal.o
+debug/sm_mqtt_client.o
+debug/qt_utils.o
+debug/sm_logger.o
+debug/main.o
+debug/mainwindow.o
+debug/map_view.o
+debug/qrc_Maps.o
+debug/qrc_images.o
+debug/moc_electric_case_add.o
+debug/moc_fake_mqtt.o
+debug/moc_mainwindow.o
+debug/moc_map_view.o

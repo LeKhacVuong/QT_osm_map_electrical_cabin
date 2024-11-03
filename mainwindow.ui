@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>920</width>
+    <height>541</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Quản lý tủ điện</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="QIcon::ThemeIcon::GoHome"/>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>920</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuT_y_ch_n">
+    <property name="title">
+     <string>Tùy chọn</string>
+    </property>
+    <addaction name="action_caseMap"/>
+    <addaction name="action_fakeMqtt"/>
+   </widget>
+   <addaction name="menuT_y_ch_n"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_caseMap">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::ZoomIn"/>
+   </property>
+   <property name="text">
+    <string>Bản đồ lắp đặt</string>
+   </property>
+  </action>
+  <action name="action_fakeMqtt">
+   <property name="text">
+    <string>Fake mqtt</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

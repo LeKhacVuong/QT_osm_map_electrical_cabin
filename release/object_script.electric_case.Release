@@ -1,0 +1,16 @@
+release/electric_case_add.o
+release/fake_mqtt.o
+release/mqtt.o
+release/mqtt_pal.o
+release/sm_mqtt_client.o
+release/qt_utils.o
+release/sm_logger.o
+release/main.o
+release/mainwindow.o
+release/map_view.o
+release/qrc_Maps.o
+release/qrc_images.o
+release/moc_electric_case_add.o
+release/moc_fake_mqtt.o
+release/moc_mainwindow.o
+release/moc_map_view.o

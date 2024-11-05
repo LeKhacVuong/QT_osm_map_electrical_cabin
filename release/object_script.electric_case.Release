@@ -1,3 +1,4 @@
+release/case_setting.o
 release/electric_case_add.o
 release/fake_mqtt.o
 release/mqtt.o
@@ -10,6 +11,7 @@ release/mainwindow.o
 release/map_view.o
 release/qrc_Maps.o
 release/qrc_images.o
+release/moc_case_setting.o
 release/moc_electric_case_add.o
 release/moc_fake_mqtt.o
 release/moc_mainwindow.o

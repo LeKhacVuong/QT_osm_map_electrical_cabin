@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtLocation 5.15
 import QtPositioning 5.15
+import QtQuick.Controls 2.15
 
 Item {
     id: window
@@ -13,6 +14,7 @@ Item {
             id:mark_gen
             property color markerColor: "lightgray"
             property var position
+            property var des: "Tọa độ " + mark_gen.coordinate.toString()
             property var size: mapview.zoomLevel
             anchorPoint.x: 10
             anchorPoint.y: 10
@@ -24,6 +26,12 @@ Item {
                 radius: 10
                 border.color: "black"
                 border.width: 2
+
+                MouseArea {
+                    anchors.fill: parent
+                    ToolTip.visible: containsMouse
+                    ToolTip.text: mark_gen.des
+                }
             }
         }
     }
@@ -32,9 +40,9 @@ Item {
 
     property var markerList: []
 
-    function addNewMark(lat, lon, color) {
+    function addNewMark(lat, lon, color, name) {
         mapview.center = QtPositioning.coordinate(lat, lon);
-        var item = locmarker.createObject(window, {coordinate:QtPositioning.coordinate(lat, lon), markerColor:color})
+        var item = locmarker.createObject(window, {coordinate:QtPositioning.coordinate(lat, lon), markerColor:color, des: name})
         console.log("Add new mark at lat", lat, "lon", lon, "color", color);
         markerList.push(item);
         mapview.addMapItem(item)

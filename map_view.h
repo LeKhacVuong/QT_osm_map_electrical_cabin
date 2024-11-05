@@ -11,28 +11,7 @@
 #include <QtGui>
 #include <QtQuick>
 #include "electric_case_add.h"
-
-typedef struct{
-    int8_t m_err;
-    int32_t m_phaseA;
-    int32_t m_phaseB;
-    int32_t m_phaseC;
-    int32_t m_threadHold;
-    uint32_t m_startTime;
-    uint32_t m_stopTime;
-}caseData;
-
-typedef struct{
-    QString m_name;
-    struct{
-        float m_lat;
-        float m_lon;
-    }m_location;
-    QString m_color;
-    QString m_description;
-    bool m_isOnline;
-}caseInfo;
-
+#include "case_data_define.h"
 
 namespace Ui {
 class map_view;
@@ -60,10 +39,10 @@ public:
     int mapViewRemoveAllCaseMark();
 
 public slots:
-    void on_newCaseMsg(QString name, caseData data);
+    void on_newCaseMsg(QString name, caseData_t data);
 
 signals:
-    void addNewMarkSig(QVariant, QVariant, QVariant);
+    void addNewMarkSig(QVariant, QVariant, QVariant, QVariant);
     void removeMarkSig(QVariant);
     void changeMarkColorSig(QVariant, QVariant);
     void moveMapCenterSig(QVariant, QVariant);
@@ -81,9 +60,12 @@ private slots:
 
     void on_listWidget_caseList_currentTextChanged(const QString &currentText);
 
+
 private:
+    caseGet_t getCaseByName(QString name);
+
     Ui::map_view *ui;
-    QVector<caseInfo> m_caseList;
+    QVector<caseInfo_t> m_caseList;
     electric_case_add m_addDialog;
 };
 

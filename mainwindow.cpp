@@ -79,7 +79,7 @@ void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
 
     QJsonObject jsonObj = jsonDoc.object();
 
-    caseData data;
+    caseData_t data;
     QString name = jsonObj.value("sn").toString();
     data.m_err = jsonObj.value("err_code").toInt();
     data.m_phaseA = jsonObj.value("phase_a").toInt();

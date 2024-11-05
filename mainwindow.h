@@ -20,7 +20,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 signals:
-    void newCaseInfoMsg(QString name, caseData data);
+    void newCaseInfoMsg(QString name, caseData_t data);
 
 public:
     MainWindow(QWidget *parent = nullptr);

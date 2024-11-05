@@ -1,10 +1,10 @@
 -IC:/Qt/6.8.0/llvm-mingw_64/mkspecs/win32-clang-g++
--IC:/Users/vypa0/OneDrive/Documents/electric_case
--IC:/Users/vypa0/OneDrive/Documents/electric_case/libs
--IC:/Users/vypa0/OneDrive/Documents/electric_case/libs/utils
--IC:/Users/vypa0/OneDrive/Documents/electric_case/libs/MQTT-C
--IC:/Users/vypa0/OneDrive/Documents/electric_case/libs/MQTT-C/inc
--IC:/Users/vypa0/OneDrive/Documents/electric_case/libs/mqtt/mqtt_client
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/utils
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/MQTT-C
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/MQTT-C/inc
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/mqtt/mqtt_client
 -IC:/Qt/6.8.0/llvm-mingw_64/include
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtQuickWidgets
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets

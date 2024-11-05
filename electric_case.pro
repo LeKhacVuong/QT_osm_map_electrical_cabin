@@ -11,6 +11,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    case_setting.cpp \
     electric_case_add.cpp \
     fake_mqtt.cpp \
     libs/MQTT-C/src/mqtt.c \
@@ -23,6 +24,8 @@ SOURCES += \
     map_view.cpp
 
 HEADERS += \
+    case_data_define.h \
+    case_setting.h \
     electric_case_add.h \
     fake_mqtt.h \
     libs/MQTT-C/inc/mqtt.h \
@@ -35,6 +38,7 @@ HEADERS += \
     map_view.h
 
 FORMS += \
+    case_setting.ui \
     electric_case_add.ui \
     fake_mqtt.ui \
     mainwindow.ui \

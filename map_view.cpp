@@ -11,7 +11,7 @@
 #define NOMAR_COLOR      "lightgreen"
 #define ERROR_COLOR      "red"
 
-static QString buildCaseDataDes(const caseData &data) {
+static QString buildCaseDataDes(const caseData_t &data) {
     QDateTime receivedTime = QDateTime::currentDateTime();
     return QString("\n\nMã lỗi: %1\n"
                    "Thời gian nhận: %2\n"
@@ -66,7 +66,7 @@ map_view::map_view(QWidget *parent)
 
     auto rootObject = ui->quickWidget_mapView->rootObject();
     if (rootObject) {
-        connect(this, SIGNAL(addNewMarkSig(QVariant,QVariant,QVariant)), rootObject, SLOT(addNewMark(QVariant,QVariant,QVariant)));
+        connect(this, SIGNAL(addNewMarkSig(QVariant,QVariant,QVariant,QVariant)), rootObject, SLOT(addNewMark(QVariant,QVariant,QVariant,QVariant)));
         connect(this, SIGNAL(removeAllMarkSig()), rootObject, SLOT(removeAllMark()));
         connect(this, SIGNAL(removeMarkSig(QVariant)), rootObject, SLOT(removeMark(QVariant)));
         connect(this, SIGNAL(changeMarkColorSig(QVariant,QVariant)), rootObject, SLOT(changeMarkColor(QVariant,QVariant)));
@@ -83,7 +83,7 @@ map_view::map_view(QWidget *parent)
 
     for (int i = 0; i < size; ++i) {
         settings.setArrayIndex(i);
-        caseInfo newCase;
+        caseInfo_t newCase;
         newCase.m_name = settings.value("name").toString();
         newCase.m_location.m_lat = settings.value("lat").toDouble();
         newCase.m_location.m_lon = settings.value("lon").toDouble();
@@ -111,7 +111,7 @@ int map_view::mapViewAddCaseMark(QString _name, float _lat, float _lon, QString 
         }
     }
 
-    caseInfo info = {.m_name = _name, .m_location = {.m_lat = _lat, .m_lon = _lon}, .m_color = _color, .m_description = _desScrip};
+    caseInfo_t info = {.m_name = _name, .m_location = {.m_lat = _lat, .m_lon = _lon}, .m_color = _color, .m_description = _desScrip};
     m_caseList.push_back(info);
 
     QListWidgetItem *item = new QListWidgetItem(_name);
@@ -121,7 +121,7 @@ int map_view::mapViewAddCaseMark(QString _name, float _lat, float _lon, QString 
     ui->listWidget_caseList->addItem(item);
     ui->listWidget_caseList->setCurrentItem(item);
 
-    emit addNewMarkSig(_lat, _lon, _color);
+    emit addNewMarkSig(_lat, _lon, _color, _name);
     return 0;
 }
 
@@ -173,12 +173,19 @@ int map_view::mapViewRemoveAllCaseMark()
 
 }
 
-void map_view::on_newCaseMsg(QString name, caseData data)
+void map_view::on_newCaseMsg(QString name, caseData_t data)
 {
     LOG_INF(TAG, "New msg from %s, err %d", name.toStdString().c_str(), data.m_err);
 
+
+    auto caseInfo = getCaseByName(ui->listWidget_caseList->currentItem()->text());
+    if(!caseInfo.m_info){
+        return;
+    }
+
     for(auto item: m_caseList){
         if(item.m_name == name){
+            item.m_data = data;
             if(data.m_err){
                 mapViewChangeColorCaseMark(name, ERROR_COLOR);
             }else{
@@ -221,6 +228,12 @@ void map_view::on_pushButton_removeCase_clicked()
 
 void map_view::on_pushButton_caseDetail_clicked()
 {
+    auto caseInfo = getCaseByName(ui->listWidget_caseList->currentItem()->text());
+    if(!caseInfo.m_info){
+        return;
+    }
+
+
 
 }
 
@@ -233,4 +246,23 @@ void map_view::on_listWidget_caseList_currentTextChanged(const QString &currentT
         }
     }
 }
+
+caseGet_t map_view::getCaseByName(QString name)
+{
+    caseGet_t caseGet;
+    for(int index = 0; index < m_caseList.size(); index++){
+        if(name == m_caseList[index].m_name){
+            caseGet.m_info = &m_caseList[index];
+            caseGet.m_index = index;
+        }
+    }
+    for (int i = 0; i < ui->listWidget_caseList->count(); ++i) {
+        QListWidgetItem *child = ui->listWidget_caseList->item(i);
+        if(child->text() == name){
+            caseGet.m_display = child;
+        }
+    }
+    return caseGet;
+}
+
 

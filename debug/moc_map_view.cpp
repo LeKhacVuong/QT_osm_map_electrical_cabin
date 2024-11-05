@@ -49,7 +49,7 @@ constexpr auto qt_meta_stringdata_CLASSmap_viewENDCLASS = QtMocHelpers::stringDa
     "removeAllMarkSig",
     "on_newCaseMsg",
     "name",
-    "caseData",
+    "caseData_t",
     "data",
     "on_userConfirmAddCase",
     "_name",
@@ -81,22 +81,22 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,   80,    2, 0x06,    1 /* Public */,
-       4,    1,   87,    2, 0x06,    5 /* Public */,
-       5,    2,   90,    2, 0x06,    7 /* Public */,
-       6,    2,   95,    2, 0x06,   10 /* Public */,
-       7,    0,  100,    2, 0x06,   13 /* Public */,
+       1,    4,   80,    2, 0x06,    1 /* Public */,
+       4,    1,   89,    2, 0x06,    6 /* Public */,
+       5,    2,   92,    2, 0x06,    8 /* Public */,
+       6,    2,   97,    2, 0x06,   11 /* Public */,
+       7,    0,  102,    2, 0x06,   14 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    2,  101,    2, 0x0a,   14 /* Public */,
-      12,    4,  106,    2, 0x08,   17 /* Private */,
-      17,    0,  115,    2, 0x08,   22 /* Private */,
-      18,    0,  116,    2, 0x08,   23 /* Private */,
-      19,    0,  117,    2, 0x08,   24 /* Private */,
-      20,    1,  118,    2, 0x08,   25 /* Private */,
+       8,    2,  103,    2, 0x0a,   15 /* Public */,
+      12,    4,  108,    2, 0x08,   18 /* Private */,
+      17,    0,  117,    2, 0x08,   23 /* Private */,
+      18,    0,  118,    2, 0x08,   24 /* Private */,
+      19,    0,  119,    2, 0x08,   25 /* Private */,
+      20,    1,  120,    2, 0x08,   26 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    2,    2,    2,
+    QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    2,    2,    2,    2,
     QMetaType::Void, 0x80000000 | 3,    2,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3,    2,    2,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3,    2,    2,
@@ -127,6 +127,7 @@ Q_CONSTINIT const QMetaObject map_view::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
         QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
         QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
         // method 'removeMarkSig'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
@@ -143,7 +144,7 @@ Q_CONSTINIT const QMetaObject map_view::staticMetaObject = { {
         // method 'on_newCaseMsg'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        QtPrivate::TypeAndForceComplete<caseData, std::false_type>,
+        QtPrivate::TypeAndForceComplete<caseData_t, std::false_type>,
         // method 'on_userConfirmAddCase'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -169,12 +170,12 @@ void map_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         auto *_t = static_cast<map_view *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->addNewMarkSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[3]))); break;
+        case 0: _t->addNewMarkSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[4]))); break;
         case 1: _t->removeMarkSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1]))); break;
         case 2: _t->changeMarkColorSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 3: _t->moveMapCenterSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 4: _t->removeAllMarkSig(); break;
-        case 5: _t->on_newCaseMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData>>(_a[2]))); break;
+        case 5: _t->on_newCaseMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
         case 6: _t->on_userConfirmAddCase((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
         case 7: _t->on_pushButton_addCase_pressed(); break;
         case 8: _t->on_pushButton_removeCase_clicked(); break;
@@ -185,7 +186,7 @@ void map_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (map_view::*)(QVariant , QVariant , QVariant );
+            using _t = void (map_view::*)(QVariant , QVariant , QVariant , QVariant );
             if (_t _q_method = &map_view::addNewMarkSig; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -253,9 +254,9 @@ int map_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void map_view::addNewMarkSig(QVariant _t1, QVariant _t2, QVariant _t3)
+void map_view::addNewMarkSig(QVariant _t1, QVariant _t2, QVariant _t3, QVariant _t4)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 

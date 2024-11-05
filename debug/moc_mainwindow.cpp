@@ -43,7 +43,7 @@ constexpr auto qt_meta_stringdata_CLASSMainWindowENDCLASS = QtMocHelpers::string
     "newCaseInfoMsg",
     "",
     "name",
-    "caseData",
+    "caseData_t",
     "data",
     "on_action_caseMap_triggered",
     "on_action_fakeMqtt_triggered",
@@ -100,7 +100,7 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
         // method 'newCaseInfoMsg'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
-        QtPrivate::TypeAndForceComplete<caseData, std::false_type>,
+        QtPrivate::TypeAndForceComplete<caseData_t, std::false_type>,
         // method 'on_action_caseMap_triggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_action_fakeMqtt_triggered'
@@ -119,7 +119,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<MainWindow *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->newCaseInfoMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData>>(_a[2]))); break;
+        case 0: _t->newCaseInfoMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
         case 1: _t->on_action_caseMap_triggered(); break;
         case 2: _t->on_action_fakeMqtt_triggered(); break;
         case 3: _t->on_mqttReiceive((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
@@ -128,7 +128,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (MainWindow::*)(QString , caseData );
+            using _t = void (MainWindow::*)(QString , caseData_t );
             if (_t _q_method = &MainWindow::newCaseInfoMsg; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -168,7 +168,7 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void MainWindow::newCaseInfoMsg(QString _t1, caseData _t2)
+void MainWindow::newCaseInfoMsg(QString _t1, caseData_t _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

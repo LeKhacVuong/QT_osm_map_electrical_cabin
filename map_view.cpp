@@ -13,22 +13,27 @@
 
 static QString buildCaseDataDes(const caseData_t &data) {
     QDateTime receivedTime = QDateTime::currentDateTime();
-    return QString("\n\nMã lỗi: %1\n"
-                   "Thời gian nhận: %2\n"
-                   "Pha A: %3\n"
-                   "Pha B: %4\n"
-                   "Pha C: %5\n"
-                   "Ngưỡng cảnh báo: %6"
-                   "Thời gian bật: %7\n"
-                   "Thời gian tắt: %8")
+    return QString("\n\n"
+                   "Trạng thái: %1\n"
+                   "Chế độ hoạt động: %2\n"
+                   "Mã lỗi: %3\n"
+                   "Thời gian nhận: %4\n"
+                   "Pha A: %5\n"
+                   "Pha B: %6\n"
+                   "Pha C: %7\n"
+                   "Ngưỡng cảnh báo: %8\n"
+                   "Thời gian bật: %9\n"
+                   "Thời gian tắt: %10")
+        .arg(data.m_state?"Bật":"Tắt")
+        .arg(data.m_isAuto?"Tự động":"Thủ công")
         .arg(data.m_err)
         .arg(receivedTime.toString("HH:mm:ss"))
         .arg(data.m_phaseA)
         .arg(data.m_phaseB)
         .arg(data.m_phaseC)
         .arg(data.m_threadHold)
-        .arg(data.m_startTime)
-        .arg(data.m_stopTime);
+        .arg(SecToQTime(data.m_startTime).toString("HH:mm:ss"))
+        .arg(SecToQTime(data.m_stopTime).toString("HH:mm:ss"));
 }
 
 void map_view::closeEvent(QCloseEvent *event)
@@ -63,6 +68,7 @@ map_view::map_view(QWidget *parent)
     ui->quickWidget_mapView->setSource(QUrl("qrc:/QmlMap.qml"));
     ui->quickWidget_mapView->show();
     connect(&m_addDialog, &electric_case_add::addCaseInfoSig, this, &map_view::on_userConfirmAddCase);
+    connect(&m_settingDialog, &case_setting::confirmSetting, this, &map_view::configCaseInfo);
 
     auto rootObject = ui->quickWidget_mapView->rootObject();
     if (rootObject) {
@@ -74,6 +80,8 @@ map_view::map_view(QWidget *parent)
     } else {
         qWarning() << "Failed to find root object in QML";
     }
+
+    setWindowIcon(QIcon(":/Resource/images/logo_cty.jpg"));
 
     QSettings settings("YourCompany", "YourApp");
     settings.beginGroup("Vuong");
@@ -183,7 +191,7 @@ void map_view::on_newCaseMsg(QString name, caseData_t data)
         return;
     }
 
-    for(auto item: m_caseList){
+    for(auto &item: m_caseList){
         if(item.m_name == name){
             item.m_data = data;
             if(data.m_err){
@@ -199,6 +207,7 @@ void map_view::on_newCaseMsg(QString name, caseData_t data)
                 }
             }
             item.m_isOnline = true;
+            LOG_INF(TAG, "Cabin %s is online!!!", name.toStdString().c_str());
         }
     }
 }
@@ -233,8 +242,12 @@ void map_view::on_pushButton_caseDetail_clicked()
         return;
     }
 
-
-
+    if(!caseInfo.m_info->m_isOnline){
+        if(QMessageBox::question(this, "Xác nhận điều khiển", "Tủ điện "+caseInfo.m_info->m_name+" chưa được kết nối, có muốn tiếp tục") == QMessageBox::No){
+            return;
+        }
+    }
+    m_settingDialog.startSetting(*caseInfo.m_info);
 }
 
 

@@ -19,7 +19,7 @@ public:
     void startSetting(caseInfo_t _caseInfo);
 
 signals:
-    void confirmSetting(caseInfo_t _caseInfo);
+    void confirmSetting(QString _name, caseData_t _caseData);
 
 private slots:
     void on_pushButton_confirm_clicked();
@@ -27,7 +27,7 @@ private slots:
 private:
     Ui::case_setting *ui;
     QString m_caseName;
-    caseData_t m_caseSetting;
+    caseInfo_t m_caseSetting;
 };
 
 #endif // CASE_SETTING_H

@@ -35,15 +35,18 @@ private slots:
     void on_action_fakeMqtt_triggered();
 
     void on_mqttReiceive(QString _topic, QString _msg);
+
+    void on_configCaseInfo(QString name, caseData_t data);
+
 private:
     static void publish_cb(void** state, struct mqtt_response_publish *publish);
     Ui::MainWindow *ui;
 
     map_view m_mapView;
-    fake_mqtt* m_fakeMqtt = new fake_mqtt();
+    fake_mqtt* m_fakeMqtt = new fake_mqtt(this);
 
     sm_mqtt_client_t* m_mqttClient = nullptr;
 
-    QTimer* timer = new QTimer();
+    QTimer* timer = new QTimer(this);
 };
 #endif // MAINWINDOW_H

@@ -56,13 +56,13 @@ public:
     {
         if (case_setting->objectName().isEmpty())
             case_setting->setObjectName("case_setting");
-        case_setting->resize(400, 246);
+        case_setting->resize(505, 249);
         pushButton_confirm = new QPushButton(case_setting);
         pushButton_confirm->setObjectName("pushButton_confirm");
-        pushButton_confirm->setGeometry(QRect(210, 200, 75, 24));
+        pushButton_confirm->setGeometry(QRect(310, 200, 75, 24));
         layoutWidget = new QWidget(case_setting);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(20, 11, 351, 186));
+        layoutWidget->setGeometry(QRect(20, 11, 461, 186));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -85,6 +85,7 @@ public:
 
         label_caseName = new QLabel(layoutWidget);
         label_caseName->setObjectName("label_caseName");
+        label_caseName->setMaximumSize(QSize(16777215, 35));
         QFont font1;
         font1.setBold(true);
         label_caseName->setFont(font1);
@@ -132,6 +133,7 @@ public:
         comboBox_opMode->addItem(QString());
         comboBox_opMode->setObjectName("comboBox_opMode");
         comboBox_opMode->setFont(font1);
+        comboBox_opMode->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
 
         horizontalLayout_6->addWidget(comboBox_opMode);
 
@@ -154,6 +156,7 @@ public:
         comboBox_state->addItem(QString());
         comboBox_state->setObjectName("comboBox_state");
         comboBox_state->setFont(font1);
+        comboBox_state->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
 
         horizontalLayout_7->addWidget(comboBox_state);
 
@@ -176,7 +179,7 @@ public:
         timeEdit_start = new QTimeEdit(layoutWidget);
         timeEdit_start->setObjectName("timeEdit_start");
         timeEdit_start->setFont(font1);
-        timeEdit_start->setDateTime(QDateTime(QDate(1999, 12, 31), QTime(6, 0, 0)));
+        timeEdit_start->setDateTime(QDateTime(QDate(1999, 12, 30), QTime(6, 0, 0)));
         timeEdit_start->setMaximumTime(QTime(23, 59, 59));
         timeEdit_start->setTimeSpec(Qt::TimeSpec::UTC);
         timeEdit_start->setTime(QTime(6, 0, 0));
@@ -224,7 +227,7 @@ public:
 
         pushButton_cancel = new QPushButton(case_setting);
         pushButton_cancel->setObjectName("pushButton_cancel");
-        pushButton_cancel->setGeometry(QRect(290, 200, 75, 24));
+        pushButton_cancel->setGeometry(QRect(400, 200, 75, 24));
 
         retranslateUi(case_setting);
 

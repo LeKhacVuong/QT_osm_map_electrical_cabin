@@ -94,3 +94,13 @@ QString getAddressFromLatLon(double latitude, double longitude) {
     return address;
 }
 
+int QTimeToSec(const QTime &time) {
+    return time.hour() * 3600 + time.minute() * 60 + time.second();
+}
+
+QTime SecToQTime(int seconds) {
+    int hours = seconds / 3600;
+    int minutes = (seconds % 3600) / 60;
+    int secs = seconds % 60;
+    return QTime(hours, minutes, secs);
+}

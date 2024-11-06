@@ -38,8 +38,9 @@ constexpr auto qt_meta_stringdata_CLASScase_settingENDCLASS = QtMocHelpers::stri
     "case_setting",
     "confirmSetting",
     "",
-    "caseInfo_t",
-    "_caseInfo",
+    "_name",
+    "caseData_t",
+    "_caseData",
     "on_pushButton_confirm_clicked"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
@@ -61,13 +62,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASScase_settingENDCLASS[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    1,   26,    2, 0x06,    1 /* Public */,
+       1,    2,   26,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       5,    0,   29,    2, 0x08,    3 /* Private */,
+       6,    0,   31,    2, 0x08,    4 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3,    4,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 4,    3,    5,
 
  // slots: parameters
     QMetaType::Void,
@@ -86,7 +87,8 @@ Q_CONSTINIT const QMetaObject case_setting::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<case_setting, std::true_type>,
         // method 'confirmSetting'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<caseInfo_t, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<caseData_t, std::false_type>,
         // method 'on_pushButton_confirm_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
@@ -99,14 +101,14 @@ void case_setting::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         auto *_t = static_cast<case_setting *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->confirmSetting((*reinterpret_cast< std::add_pointer_t<caseInfo_t>>(_a[1]))); break;
+        case 0: _t->confirmSetting((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
         case 1: _t->on_pushButton_confirm_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (case_setting::*)(caseInfo_t );
+            using _t = void (case_setting::*)(QString , caseData_t );
             if (_t _q_method = &case_setting::confirmSetting; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -146,9 +148,9 @@ int case_setting::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void case_setting::confirmSetting(caseInfo_t _t1)
+void case_setting::confirmSetting(QString _t1, caseData_t _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

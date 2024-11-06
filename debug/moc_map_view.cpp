@@ -47,10 +47,11 @@ constexpr auto qt_meta_stringdata_CLASSmap_viewENDCLASS = QtMocHelpers::stringDa
     "changeMarkColorSig",
     "moveMapCenterSig",
     "removeAllMarkSig",
-    "on_newCaseMsg",
+    "configCaseInfo",
     "name",
     "caseData_t",
     "data",
+    "on_newCaseMsg",
     "on_userConfirmAddCase",
     "_name",
     "_lat",
@@ -73,27 +74,28 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      11,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       5,       // signalCount
+       6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    4,   80,    2, 0x06,    1 /* Public */,
-       4,    1,   89,    2, 0x06,    6 /* Public */,
-       5,    2,   92,    2, 0x06,    8 /* Public */,
-       6,    2,   97,    2, 0x06,   11 /* Public */,
-       7,    0,  102,    2, 0x06,   14 /* Public */,
+       1,    4,   86,    2, 0x06,    1 /* Public */,
+       4,    1,   95,    2, 0x06,    6 /* Public */,
+       5,    2,   98,    2, 0x06,    8 /* Public */,
+       6,    2,  103,    2, 0x06,   11 /* Public */,
+       7,    0,  108,    2, 0x06,   14 /* Public */,
+       8,    2,  109,    2, 0x06,   15 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    2,  103,    2, 0x0a,   15 /* Public */,
-      12,    4,  108,    2, 0x08,   18 /* Private */,
-      17,    0,  117,    2, 0x08,   23 /* Private */,
-      18,    0,  118,    2, 0x08,   24 /* Private */,
-      19,    0,  119,    2, 0x08,   25 /* Private */,
-      20,    1,  120,    2, 0x08,   26 /* Private */,
+      12,    2,  114,    2, 0x0a,   18 /* Public */,
+      13,    4,  119,    2, 0x08,   21 /* Private */,
+      18,    0,  128,    2, 0x08,   26 /* Private */,
+      19,    0,  129,    2, 0x08,   27 /* Private */,
+      20,    0,  130,    2, 0x08,   28 /* Private */,
+      21,    1,  131,    2, 0x08,   29 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    2,    2,    2,    2,
@@ -101,14 +103,15 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3,    2,    2,
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3,    2,    2,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, 0x80000000 | 10,    9,   11,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString, 0x80000000 | 10,    9,   11,
-    QMetaType::Void, QMetaType::QString, QMetaType::Float, QMetaType::Float, QMetaType::QString,   13,   14,   15,   16,
+    QMetaType::Void, QMetaType::QString, QMetaType::Float, QMetaType::Float, QMetaType::QString,   14,   15,   16,   17,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, QMetaType::QString,   22,
 
        0        // eod
 };
@@ -141,6 +144,10 @@ Q_CONSTINIT const QMetaObject map_view::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<QVariant, std::false_type>,
         // method 'removeAllMarkSig'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'configCaseInfo'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<caseData_t, std::false_type>,
         // method 'on_newCaseMsg'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -175,12 +182,13 @@ void map_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 2: _t->changeMarkColorSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 3: _t->moveMapCenterSig((*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QVariant>>(_a[2]))); break;
         case 4: _t->removeAllMarkSig(); break;
-        case 5: _t->on_newCaseMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
-        case 6: _t->on_userConfirmAddCase((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
-        case 7: _t->on_pushButton_addCase_pressed(); break;
-        case 8: _t->on_pushButton_removeCase_clicked(); break;
-        case 9: _t->on_pushButton_caseDetail_clicked(); break;
-        case 10: _t->on_listWidget_caseList_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 5: _t->configCaseInfo((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
+        case 6: _t->on_newCaseMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
+        case 7: _t->on_userConfirmAddCase((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
+        case 8: _t->on_pushButton_addCase_pressed(); break;
+        case 9: _t->on_pushButton_removeCase_clicked(); break;
+        case 10: _t->on_pushButton_caseDetail_clicked(); break;
+        case 11: _t->on_listWidget_caseList_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -220,6 +228,13 @@ void map_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
                 return;
             }
         }
+        {
+            using _t = void (map_view::*)(QString , caseData_t );
+            if (_t _q_method = &map_view::configCaseInfo; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 5;
+                return;
+            }
+        }
     }
 }
 
@@ -242,13 +257,13 @@ int map_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 11)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 11;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 11)
+        if (_id < 12)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 11;
+        _id -= 12;
     }
     return _id;
 }
@@ -285,5 +300,12 @@ void map_view::moveMapCenterSig(QVariant _t1, QVariant _t2)
 void map_view::removeAllMarkSig()
 {
     QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void map_view::configCaseInfo(QString _t1, caseData_t _t2)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    QMetaObject::activate(this, &staticMetaObject, 5, _a);
 }
 QT_WARNING_POP

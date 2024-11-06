@@ -12,6 +12,7 @@
 #include <QtQuick>
 #include "electric_case_add.h"
 #include "case_data_define.h"
+#include "case_setting.h"
 
 namespace Ui {
 class map_view;
@@ -46,8 +47,8 @@ signals:
     void removeMarkSig(QVariant);
     void changeMarkColorSig(QVariant, QVariant);
     void moveMapCenterSig(QVariant, QVariant);
-
     void removeAllMarkSig();
+    void configCaseInfo(QString name, caseData_t data);
 
 private slots:
     void on_userConfirmAddCase(QString _name, float _lat, float _lon, QString _des);
@@ -67,6 +68,7 @@ private:
     Ui::map_view *ui;
     QVector<caseInfo_t> m_caseList;
     electric_case_add m_addDialog;
+    case_setting m_settingDialog;
 };
 
 #endif // MAP_VIEW_H

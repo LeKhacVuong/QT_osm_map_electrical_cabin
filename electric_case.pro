@@ -2,6 +2,8 @@ QT       += core gui qml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick location positioning quickwidgets sql
 
+RC_ICONS = logo_cty.ico
+
 LIBS += -lWs2_32
 
 CONFIG += c++17
@@ -59,3 +61,6 @@ INCLUDEPATH += \
     libs/MQTT-C \
     libs/MQTT-C/inc \
     libs/mqtt/mqtt_client
+
+DISTFILES += \
+    logo_cty.ico

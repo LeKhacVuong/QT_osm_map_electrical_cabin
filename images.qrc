@@ -1,5 +1,7 @@
 <RCC>
-    <qresource prefix="/"/>
+    <qresource prefix="/">
+        <file>Resource/images/logo_cty.jpg</file>
+    </qresource>
     <qresource prefix="/icon/maker">
         <file>Resource/images/red_marker.png</file>
     </qresource>

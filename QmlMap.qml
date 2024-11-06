@@ -28,6 +28,7 @@ Item {
                 border.width: 2
 
                 MouseArea {
+                    hoverEnabled: true
                     anchors.fill: parent
                     ToolTip.visible: containsMouse
                     ToolTip.text: mark_gen.des
@@ -104,6 +105,24 @@ Item {
         Component.onCompleted: {
             console.log("Loaded map success");
         }
+
+        Rectangle{
+            id: logo
+            anchors.bottom: parent.bottom
+            anchors.left: parent.left
+            width: 180
+            height: 180
+            color: "lightblue"
+            Image{
+                anchors.margins: 5
+                anchors.fill: parent
+                source: "qrc:/Resource/images/logo_cty.jpg"
+                fillMode: Image.PreserveAspectFit
+            }
+        }
+
+
+
 
         MouseArea {
             property real startX

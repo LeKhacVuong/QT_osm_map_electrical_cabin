@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent)
     sm_logger_init(log_put, LOG_LEVEL_DEBUG);
     LOG_INF(TAG, "Start application");
     m_mapView.show();
-    // m_fakeMqtt->show();
+    m_fakeMqtt->show();
     g_mainWindow = this;
     sm_mqtt_client_connection_info_t info = {.broker_addr = "test.mosquitto.org", .port = "1883"};
 
@@ -39,6 +39,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(m_fakeMqtt, &fake_mqtt::mqttReceiveMsg, this, &MainWindow::on_mqttReiceive);
     connect(this, &MainWindow::newCaseInfoMsg, &m_mapView, &map_view::on_newCaseMsg);
+    connect(&m_mapView, &map_view::configCaseInfo, this, &MainWindow::on_configCaseInfo);
+
+    connect(&m_mapView, &map_view::hide, this, [&]{delete this;});
 }
 
 MainWindow::~MainWindow()
@@ -82,6 +85,8 @@ void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
     caseData_t data;
     QString name = jsonObj.value("sn").toString();
     data.m_err = jsonObj.value("err_code").toInt();
+    data.m_syncTime = jsonObj.value("sync_time").toInt();
+    data.m_isAuto = jsonObj.value("auto").toInt();
     data.m_phaseA = jsonObj.value("phase_a").toInt();
     data.m_phaseB = jsonObj.value("phase_b").toInt();
     data.m_phaseC = jsonObj.value("phase_c").toInt();
@@ -90,6 +95,11 @@ void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
     data.m_stopTime = jsonObj.value("stop_time").toInt();
 
     emit newCaseInfoMsg(name, data);
+}
+
+void MainWindow::on_configCaseInfo(QString name, caseData_t data)
+{
+    LOG_INF(TAG, "Now config case via mqtt !!");
 }
 
 void MainWindow::publish_cb(void **state, mqtt_response_publish *publish)

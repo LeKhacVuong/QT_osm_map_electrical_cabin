@@ -17,4 +17,8 @@ void showLineEditFromBuff(QLineEdit* _lineEdit, const uint8_t* buffer, size_t bu
 
 QString getAddressFromLatLon(double latitude, double longitude);
 
+int QTimeToSec(const QTime &time);
+
+QTime SecToQTime(int seconds);
+
 #endif // QT_UTILS_H

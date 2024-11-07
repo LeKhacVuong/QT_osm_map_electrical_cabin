@@ -13,6 +13,7 @@
 #include "electric_case_add.h"
 #include "case_data_define.h"
 #include "case_setting.h"
+#include "cabinet_olnine.h"
 
 namespace Ui {
 class map_view;

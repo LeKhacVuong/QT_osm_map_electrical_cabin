@@ -22,15 +22,33 @@
      <x>20</x>
      <y>10</y>
      <width>271</width>
-     <height>451</height>
+     <height>531</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>12</pointsize>
+     <pointsize>16</pointsize>
      <italic>true</italic>
      <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QListWidget {
+    background-color: lightgray; /* Màu nền */
+    border: 2px solid #4CAF50; /* Đường viền */
+    border-radius: 15px; /* Bo góc */
+    padding: 5px; /* Khoảng cách bên trong */
+}
+</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Shape::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Shadow::Plain</enum>
+   </property>
+   <property name="itemAlignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
    </property>
   </widget>
   <widget class="QQuickWidget" name="quickWidget_mapView">
@@ -42,6 +60,14 @@
      <height>711</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QQuickWidget {
+    background-color: white; /* Màu nền */
+    border: 2px solid #4CAF50; /* Đường viền */
+    border-radius: 15px; /* Bo góc */
+    padding: 5px; /* Khoảng cách bên trong */
+}</string>
+   </property>
    <property name="resizeMode">
     <enum>QQuickWidget::ResizeMode::SizeRootObjectToView</enum>
    </property>
@@ -49,9 +75,9 @@
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>480</y>
-     <width>231</width>
+     <x>20</x>
+     <y>560</y>
+     <width>271</width>
      <height>131</height>
     </rect>
    </property>
@@ -66,10 +92,27 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <italic>true</italic>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #4CAF50; /* Màu nền ban đầu */
+    color: white;              /* Màu chữ */
+    border-radius: 8px;        /* Bo góc */
+    padding: 10px;             /* Khoảng cách bên trong nút */
+    font: bold 14px;           /* Kiểu chữ */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Màu nền khi ấn */
+}</string>
       </property>
       <property name="text">
        <string>Thêm tủ điện</string>
@@ -86,10 +129,27 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <italic>true</italic>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #4CAF50; /* Màu nền ban đầu */
+    color: white;              /* Màu chữ */
+    border-radius: 8px;        /* Bo góc */
+    padding: 10px;             /* Khoảng cách bên trong nút */
+    font: bold 14px;           /* Kiểu chữ */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Màu nền khi ấn */
+}</string>
       </property>
       <property name="text">
        <string>Xóa tủ điện</string>
@@ -106,10 +166,27 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
-        <italic>true</italic>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    background-color: #4CAF50; /* Màu nền ban đầu */
+    color: white;              /* Màu chữ */
+    border-radius: 8px;        /* Bo góc */
+    padding: 10px;             /* Khoảng cách bên trong nút */
+    font: bold 14px;           /* Kiểu chữ */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Màu nền khi hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Màu nền khi ấn */
+}</string>
       </property>
       <property name="text">
        <string>Điều khiển tủ điện</string>

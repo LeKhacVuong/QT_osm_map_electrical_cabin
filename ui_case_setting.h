@@ -179,7 +179,7 @@ public:
         timeEdit_start = new QTimeEdit(layoutWidget);
         timeEdit_start->setObjectName("timeEdit_start");
         timeEdit_start->setFont(font1);
-        timeEdit_start->setDateTime(QDateTime(QDate(1999, 12, 30), QTime(6, 0, 0)));
+        timeEdit_start->setDateTime(QDateTime(QDate(1999, 12, 29), QTime(6, 0, 0)));
         timeEdit_start->setMaximumTime(QTime(23, 59, 59));
         timeEdit_start->setTimeSpec(Qt::TimeSpec::UTC);
         timeEdit_start->setTime(QTime(6, 0, 0));
@@ -236,7 +236,7 @@ public:
 
     void retranslateUi(QDialog *case_setting)
     {
-        case_setting->setWindowTitle(QCoreApplication::translate("case_setting", "Dialog", nullptr));
+        case_setting->setWindowTitle(QCoreApplication::translate("case_setting", "\304\220i\341\273\201u khi\341\273\203n t\341\273\247 \304\221i\341\273\207n", nullptr));
         pushButton_confirm->setText(QCoreApplication::translate("case_setting", "X\303\241c nh\341\272\255n", nullptr));
         label->setText(QCoreApplication::translate("case_setting", "T\303\252n t\341\273\247 \304\221i\341\273\207n", nullptr));
         label_caseName->setText(QString());

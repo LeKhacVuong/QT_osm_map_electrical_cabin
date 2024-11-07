@@ -94,71 +94,80 @@ Item {
         }
     }
 
-    Map {
-        id: mapview
+    Rectangle{
+        id :rec_map
         anchors.fill: parent
-        plugin: osmPlugin
-        center: QtPositioning.coordinate(21.037567751217743, 105.78886850880606) // Hà Nội
-        zoomLevel: 15
-        activeMapType: mapview.supportedMapTypes[mapview.supportedMapTypes.length - 1]
-
-        Component.onCompleted: {
-            console.log("Loaded map success");
-        }
-
-        Rectangle{
-            id: logo
-            anchors.bottom: parent.bottom
-            anchors.left: parent.left
-            width: 180
-            height: 180
-            color: "lightblue"
-            Image{
-                anchors.margins: 5
-                anchors.fill: parent
-                source: "qrc:/Resource/images/logo_cty.jpg"
-                fillMode: Image.PreserveAspectFit
-            }
-        }
-
-
-
-
-        MouseArea {
-            property real startX
-            property real startY
+        radius: 5
+        color: "lightblue"
+        Map {
+            id: mapview
             anchors.fill: parent
-            onWheel: function(event) {
-                if (event.angleDelta.y < 0) {
-                    mapview.zoomLevel -= 0.25;
-                } else {
-                    mapview.zoomLevel += 0.25;
-                }
+            anchors.margins: 10
+            plugin: osmPlugin
+            center: QtPositioning.coordinate(21.037567751217743, 105.78886850880606) // Hà Nội
+            zoomLevel: 15
+            activeMapType: mapview.supportedMapTypes[mapview.supportedMapTypes.length - 1]
 
-                for (var i = 0; i < markerList.length; i++) {
-                    markerList[i].size = mapview.zoomLevel
-                }
-
-                event.accepted = true;
+            Component.onCompleted: {
+                console.log("Loaded map success");
             }
 
-            onPressed: function(event) {
-                startX = event.x;
-                startY = event.y;
+            Rectangle{
+                id: logo
+                anchors.bottom: parent.bottom
+                anchors.left: parent.left
+                width: 70
+                height: 70
+                color: "lightblue"
+                Image{
+                    anchors.margins: 0
+                    anchors.fill: parent
+                    source: "qrc:/Resource/images/logo_cty.jpg"
+                    fillMode: Image.PreserveAspectFit
+                }
             }
 
-            onPositionChanged: function(event) {
-                var dx = event.x - startX;
-                var dy = event.y - startY;
-                var multipler = 50000 / Math.pow(mapview.zoomLevel, 8);
-                var newCenter = QtPositioning.coordinate(
-                    mapview.center.latitude + (dy * multipler),
-                    mapview.center.longitude - (dx * multipler)
-                );
-                mapview.center = newCenter;
-                startX = event.x;
-                startY = event.y;
+
+
+
+            MouseArea {
+                property real startX
+                property real startY
+                anchors.fill: parent
+                onWheel: function(event) {
+                    if (event.angleDelta.y < 0) {
+                        mapview.zoomLevel -= 0.25;
+                    } else {
+                        mapview.zoomLevel += 0.25;
+                    }
+
+                    for (var i = 0; i < markerList.length; i++) {
+                        markerList[i].size = mapview.zoomLevel
+                    }
+
+                    event.accepted = true;
+                }
+
+                onPressed: function(event) {
+                    startX = event.x;
+                    startY = event.y;
+                }
+
+                onPositionChanged: function(event) {
+                    var dx = event.x - startX;
+                    var dy = event.y - startY;
+                    var multipler = 50000 / Math.pow(mapview.zoomLevel, 8);
+                    var newCenter = QtPositioning.coordinate(
+                        mapview.center.latitude + (dy * multipler),
+                        mapview.center.longitude - (dx * multipler)
+                    );
+                    mapview.center = newCenter;
+                    startX = event.x;
+                    startY = event.y;
+                }
             }
         }
     }
+
+
 }

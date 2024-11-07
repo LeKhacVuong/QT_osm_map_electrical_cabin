@@ -4,12 +4,35 @@
 #include "sm_logger.h"
 #include "QMessageBox"
 #include "qt_utils.h"
+#include <QPixmap>
+#include <QPainter>
+#include <QBrush>
+#include <QColor>
+
 
 #define TAG "mapView"
 
-#define NOT_ACTIVE_COLOR "black"
+#define NOT_ACTIVE_COLOR "red"
 #define NOMAR_COLOR      "lightgreen"
-#define ERROR_COLOR      "red"
+#define ERROR_COLOR      "yellow"
+
+static QIcon createCircleIcon(const QColor& color, int diameter = 16) {
+    QPixmap pixmap(diameter, diameter);
+    pixmap.fill(Qt::transparent); // Đảm bảo nền trong suốt
+
+    QPainter painter(&pixmap);
+    painter.setRenderHint(QPainter::Antialiasing);
+    painter.setBrush(QBrush(color));
+    painter.setPen(Qt::NoPen);
+    painter.drawEllipse(0, 0, diameter, diameter);
+
+    return QIcon(pixmap);
+}
+
+static void changeCircleColor(QListWidgetItem* item, const QColor& newColor) {
+    QIcon newIcon = createCircleIcon(newColor);
+    item->setIcon(newIcon);
+}
 
 static QString buildCaseDataDes(const caseData_t &data) {
     QDateTime receivedTime = QDateTime::currentDateTime();
@@ -122,9 +145,11 @@ int map_view::mapViewAddCaseMark(QString _name, float _lat, float _lon, QString 
     caseInfo_t info = {.m_name = _name, .m_location = {.m_lat = _lat, .m_lon = _lon}, .m_color = _color, .m_description = _desScrip};
     m_caseList.push_back(info);
 
-    QListWidgetItem *item = new QListWidgetItem(_name);
-    item->setForeground(QColor(_color));
+    QListWidgetItem* item = new QListWidgetItem(createCircleIcon(QColor(_color)), _name);
+    item->setForeground(QColor("black"));
     item->setToolTip(_desScrip + "\n Chưa kết nối !!!");
+
+    item->setFlags(item->flags() & ~Qt::ItemIsSelectable);
 
     ui->listWidget_caseList->addItem(item);
     ui->listWidget_caseList->setCurrentItem(item);
@@ -163,7 +188,7 @@ int map_view::mapViewChangeColorCaseMark(QString _name, QString _color)
             for (int i = 0; i < ui->listWidget_caseList->count(); ++i) {
                 QListWidgetItem *item = ui->listWidget_caseList->item(i);
                 if(item->text() == _name){
-                    item->setForeground(QColor(_color));
+                    changeCircleColor(item, QColor(_color));
                 }
             }
 
@@ -257,6 +282,16 @@ void map_view::on_listWidget_caseList_currentTextChanged(const QString &currentT
         if(item.m_name == currentText){
             mapViewChangeCenter(item.m_location.m_lat, item.m_location.m_lon);
         }
+    }
+    for (int i = 0; i < ui->listWidget_caseList->count(); ++i) {
+        QListWidgetItem* currentItem = ui->listWidget_caseList->item(i);
+        QFont font = currentItem->font();
+        if (ui->listWidget_caseList->currentItem() == currentItem) {
+            font.setUnderline(true); // Gạch chân mục đang chọn
+        } else {
+            font.setUnderline(false); // Bỏ gạch chân mục không chọn
+        }
+        currentItem->setFont(font);
     }
 }
 

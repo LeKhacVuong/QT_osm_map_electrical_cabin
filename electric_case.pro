@@ -13,6 +13,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    cabinet_display.cpp \
     case_setting.cpp \
     electric_case_add.cpp \
     fake_mqtt.cpp \
@@ -26,6 +27,8 @@ SOURCES += \
     map_view.cpp
 
 HEADERS += \
+    cabinet_display.h \
+    cabinet_olnine.h \
     case_data_define.h \
     case_setting.h \
     electric_case_add.h \
@@ -40,6 +43,7 @@ HEADERS += \
     map_view.h
 
 FORMS += \
+    cabinet_display.ui \
     case_setting.ui \
     electric_case_add.ui \
     fake_mqtt.ui \

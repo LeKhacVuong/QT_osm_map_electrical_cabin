@@ -41,19 +41,35 @@ public:
         map_view->setWindowIcon(icon);
         listWidget_caseList = new QListWidget(map_view);
         listWidget_caseList->setObjectName("listWidget_caseList");
-        listWidget_caseList->setGeometry(QRect(20, 10, 271, 451));
+        listWidget_caseList->setGeometry(QRect(20, 10, 271, 531));
         QFont font;
-        font.setPointSize(12);
+        font.setPointSize(16);
         font.setBold(true);
         font.setItalic(true);
         listWidget_caseList->setFont(font);
+        listWidget_caseList->setStyleSheet(QString::fromUtf8("QListWidget {\n"
+"    background-color: lightgray; /* M\303\240u n\341\273\201n */\n"
+"    border: 2px solid #4CAF50; /* \304\220\306\260\341\273\235ng vi\341\273\201n */\n"
+"    border-radius: 15px; /* Bo g\303\263c */\n"
+"    padding: 5px; /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
+"}\n"
+""));
+        listWidget_caseList->setFrameShape(QFrame::Shape::StyledPanel);
+        listWidget_caseList->setFrameShadow(QFrame::Shadow::Plain);
+        listWidget_caseList->setItemAlignment(Qt::AlignmentFlag::AlignCenter);
         quickWidget_mapView = new QQuickWidget(map_view);
         quickWidget_mapView->setObjectName("quickWidget_mapView");
         quickWidget_mapView->setGeometry(QRect(310, 10, 931, 711));
+        quickWidget_mapView->setStyleSheet(QString::fromUtf8("QQuickWidget {\n"
+"    background-color: white; /* M\303\240u n\341\273\201n */\n"
+"    border: 2px solid #4CAF50; /* \304\220\306\260\341\273\235ng vi\341\273\201n */\n"
+"    border-radius: 15px; /* Bo g\303\263c */\n"
+"    padding: 5px; /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
+"}"));
         quickWidget_mapView->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
         layoutWidget = new QWidget(map_view);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(40, 480, 231, 131));
+        layoutWidget->setGeometry(QRect(20, 560, 271, 131));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -61,10 +77,24 @@ public:
         pushButton_addCase->setObjectName("pushButton_addCase");
         pushButton_addCase->setMaximumSize(QSize(16777215, 50));
         QFont font1;
-        font1.setPointSize(10);
         font1.setBold(true);
-        font1.setItalic(true);
+        font1.setItalic(false);
         pushButton_addCase->setFont(font1);
+        pushButton_addCase->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #4CAF50; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    color: white;              /* M\303\240u ch\341\273\257 */\n"
+"    border-radius: 8px;        /* Bo g\303\263c */\n"
+"    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
+"    font: bold 14px;           /* Ki\341\273\203u ch\341\273\257 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #45a049; /* M\303\240u n\341\273\201n khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #3e8e41; /* M\303\240u n\341\273\201n khi \341\272\245n */\n"
+"}"));
 
         verticalLayout->addWidget(pushButton_addCase);
 
@@ -72,6 +102,21 @@ public:
         pushButton_removeCase->setObjectName("pushButton_removeCase");
         pushButton_removeCase->setMaximumSize(QSize(16777215, 50));
         pushButton_removeCase->setFont(font1);
+        pushButton_removeCase->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #4CAF50; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    color: white;              /* M\303\240u ch\341\273\257 */\n"
+"    border-radius: 8px;        /* Bo g\303\263c */\n"
+"    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
+"    font: bold 14px;           /* Ki\341\273\203u ch\341\273\257 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #45a049; /* M\303\240u n\341\273\201n khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #3e8e41; /* M\303\240u n\341\273\201n khi \341\272\245n */\n"
+"}"));
 
         verticalLayout->addWidget(pushButton_removeCase);
 
@@ -79,6 +124,21 @@ public:
         pushButton_caseDetail->setObjectName("pushButton_caseDetail");
         pushButton_caseDetail->setMaximumSize(QSize(16777215, 50));
         pushButton_caseDetail->setFont(font1);
+        pushButton_caseDetail->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: #4CAF50; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    color: white;              /* M\303\240u ch\341\273\257 */\n"
+"    border-radius: 8px;        /* Bo g\303\263c */\n"
+"    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
+"    font: bold 14px;           /* Ki\341\273\203u ch\341\273\257 */\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: #45a049; /* M\303\240u n\341\273\201n khi hover */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #3e8e41; /* M\303\240u n\341\273\201n khi \341\272\245n */\n"
+"}"));
 
         verticalLayout->addWidget(pushButton_caseDetail);
 

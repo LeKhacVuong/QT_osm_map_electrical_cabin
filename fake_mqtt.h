@@ -19,10 +19,12 @@ signals:
 
     void mqttReceiveMsg(QString _topic, QString _msg);
 
+public slots:
+    void on_mqttSendMsg(QString topic, QString msg);
+
 private slots:
     void on_pushButton_publish_clicked();
 
-    void on_mqttSendMsg(QString topic, QString msg);
 
 private:
     Ui::fake_mqtt *ui;

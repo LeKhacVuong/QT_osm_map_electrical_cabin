@@ -38,8 +38,11 @@ MainWindow::MainWindow(QWidget *parent)
     timer->start();
 
     connect(m_fakeMqtt, &fake_mqtt::mqttReceiveMsg, this, &MainWindow::on_mqttReiceive);
+    connect(this, &MainWindow::mqttSendMsgSig, m_fakeMqtt, &fake_mqtt::on_mqttSendMsg);
+
     connect(this, &MainWindow::newCaseInfoMsg, &m_mapView, &map_view::on_newCaseMsg);
     connect(&m_mapView, &map_view::configCaseInfo, this, &MainWindow::on_configCaseInfo);
+
 
     connect(&m_mapView, &map_view::hide, this, [&]{delete this;});
 }
@@ -100,6 +103,25 @@ void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
 void MainWindow::on_configCaseInfo(QString name, caseData_t data)
 {
     LOG_INF(TAG, "Now config case via mqtt !!");
+    QString topic = "electric_cabinet/" + name + "/control";
+
+    QString jsonString = QString(
+                             "{\n"
+                             "    \"thread_hold\": %1,\n"
+                             "    \"state\": %2,\n"
+                             "    \"auto\": %3,\n"
+                             "    \"start_time\": %4,\n"
+                             "    \"stop_time\": %5,\n"
+                             "    \"sync_time\": %6\n"
+                             "}"
+                             ).arg(data.m_threadHold)
+                             .arg(data.m_state)
+                             .arg(data.m_isAuto)
+                             .arg(data.m_startTime)
+                             .arg(data.m_stopTime)
+                             .arg(data.m_syncTime);
+
+    emit mqttSendMsgSig(topic, jsonString);
 }
 
 void MainWindow::publish_cb(void **state, mqtt_response_publish *publish)

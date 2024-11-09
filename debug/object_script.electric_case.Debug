@@ -10,7 +10,9 @@ debug/sm_logger.o
 debug/main.o
 debug/mainwindow.o
 debug/map_view.o
-debug/qrc_Maps.o
+debug/QmlMap_qml.o
+debug/qmlcache_loader.o
+debug/qrc_Maps_qmlcache.o
 debug/qrc_images.o
 debug/moc_cabinet_display.o
 debug/moc_cabinet_olnine.o

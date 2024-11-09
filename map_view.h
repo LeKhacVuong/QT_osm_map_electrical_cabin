@@ -51,6 +51,7 @@ signals:
     void removeAllMarkSig();
     void configCaseInfo(QString name, caseData_t data);
 
+
 private slots:
     void on_userConfirmAddCase(QString _name, float _lat, float _lon, QString _des);
 

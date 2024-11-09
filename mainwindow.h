@@ -7,7 +7,7 @@
 #include <QCloseEvent>
 #include "sm_mqtt_client.h"
 
-#define MQTT_SYNC_TOPIC "electric_case/reponse"
+#define MQTT_SYNC_TOPIC "electric_cabinet/reponse"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,6 +21,7 @@ class MainWindow : public QMainWindow
 
 signals:
     void newCaseInfoMsg(QString name, caseData_t data);
+    void mqttSendMsgSig(QString topic, QString msg);
 
 public:
     MainWindow(QWidget *parent = nullptr);

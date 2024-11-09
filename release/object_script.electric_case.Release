@@ -10,7 +10,9 @@ release/sm_logger.o
 release/main.o
 release/mainwindow.o
 release/map_view.o
-release/qrc_Maps.o
+release/QmlMap_qml.o
+release/qmlcache_loader.o
+release/qrc_Maps_qmlcache.o
 release/qrc_images.o
 release/moc_cabinet_display.o
 release/moc_cabinet_olnine.o

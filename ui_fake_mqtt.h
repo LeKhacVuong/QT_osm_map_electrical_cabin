@@ -14,7 +14,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
-#include <QtWidgets/QListView>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -28,13 +28,13 @@ public:
     QPushButton *pushButton_publish;
     QLabel *label;
     QLabel *label_2;
-    QListView *listView_sendMsg;
+    QListWidget *listWidget;
 
     void setupUi(QDialog *fake_mqtt)
     {
         if (fake_mqtt->objectName().isEmpty())
             fake_mqtt->setObjectName("fake_mqtt");
-        fake_mqtt->resize(867, 462);
+        fake_mqtt->resize(700, 462);
         lineEdit_topic = new QLineEdit(fake_mqtt);
         lineEdit_topic->setObjectName("lineEdit_topic");
         lineEdit_topic->setGeometry(QRect(90, 20, 211, 22));
@@ -50,9 +50,9 @@ public:
         label_2 = new QLabel(fake_mqtt);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(20, 60, 49, 16));
-        listView_sendMsg = new QListView(fake_mqtt);
-        listView_sendMsg->setObjectName("listView_sendMsg");
-        listView_sendMsg->setGeometry(QRect(330, 20, 261, 381));
+        listWidget = new QListWidget(fake_mqtt);
+        listWidget->setObjectName("listWidget");
+        listWidget->setGeometry(QRect(320, 20, 351, 381));
 
         retranslateUi(fake_mqtt);
 
@@ -62,7 +62,7 @@ public:
     void retranslateUi(QDialog *fake_mqtt)
     {
         fake_mqtt->setWindowTitle(QCoreApplication::translate("fake_mqtt", "Dialog", nullptr));
-        lineEdit_topic->setText(QCoreApplication::translate("fake_mqtt", "electric_case/reponse", nullptr));
+        lineEdit_topic->setText(QCoreApplication::translate("fake_mqtt", "electric_cabinet/reponse", nullptr));
         textEdit_msg->setHtml(QCoreApplication::translate("fake_mqtt", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"

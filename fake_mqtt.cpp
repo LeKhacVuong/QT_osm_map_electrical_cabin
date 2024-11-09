@@ -7,6 +7,7 @@ fake_mqtt::fake_mqtt(QWidget *parent)
 {
     ui->setupUi(this);
     setFixedSize(size());
+    setWindowFlag(Qt::WindowCloseButtonHint, false);
 
 }
 
@@ -22,6 +23,7 @@ void fake_mqtt::on_pushButton_publish_clicked()
 
 void fake_mqtt::on_mqttSendMsg(QString topic, QString msg)
 {
-
+    QListWidgetItem *item = new QListWidgetItem("Topic: " + topic + "\nMsg: " + msg + "\n\n");
+    ui->listWidget->addItem(item);
 }
 

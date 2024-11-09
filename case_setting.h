@@ -1,6 +1,7 @@
 #ifndef CASE_SETTING_H
 #define CASE_SETTING_H
 #include "case_data_define.h"
+#include "QButtonGroup"
 
 #include <QDialog>
 
@@ -28,6 +29,7 @@ private:
     Ui::case_setting *ui;
     QString m_caseName;
     caseInfo_t m_caseSetting;
+
 };
 
 #endif // CASE_SETTING_H

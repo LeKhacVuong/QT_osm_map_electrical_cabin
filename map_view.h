@@ -43,6 +43,8 @@ public:
 public slots:
     void on_newCaseMsg(QString name, caseData_t data);
 
+    void on_mqttConnecting(uint8_t stt);
+
 signals:
     void addNewMarkSig(QVariant, QVariant, QVariant, QVariant);
     void removeMarkSig(QVariant);
@@ -63,6 +65,8 @@ private slots:
 
     void on_listWidget_caseList_currentTextChanged(const QString &currentText);
 
+
+    void on_listWidget_caseList_itemDoubleClicked(QListWidgetItem *item);
 
 private:
     caseGet_t getCaseByName(QString name);

@@ -27,18 +27,44 @@ MainWindow::MainWindow(QWidget *parent)
     g_mainWindow = this;
     sm_mqtt_client_connection_info_t info = {.broker_addr = "test.mosquitto.org", .port = "1883"};
 
-    m_mqttClient = sm_mqtt_client_create(info, publish_cb);
 
-    sm_mqtt_client_subscribe(m_mqttClient, MQTT_SYNC_TOPIC);
+    connect(this, &MainWindow::mqttOnConnecting, &m_mapView, &map_view::on_mqttConnecting);
+
+
+    m_mqttClient = sm_mqtt_client_create(info, publish_cb);
 
     timer->setInterval(1);
     connect(timer, &QTimer::timeout, [&]() {
+        if(!m_mqttClient){
+            LOG_ERR(TAG, "Mqtt client error, recreate it");
+            m_mqttClient = sm_mqtt_client_create(info, publish_cb);
+            QEventLoop loop;
+            QTimer::singleShot(5000, &loop, &QEventLoop::quit);
+            loop.exec();
+            emit mqttOnConnecting(0);
+            return;
+        }
+        if(!m_isConnected){
+            if(sm_mqtt_client_subscribe(m_mqttClient, MQTT_SYNC_TOPIC) >= 0){
+                emit mqttOnConnecting(1);
+                m_isConnected = true;
+            }else{
+                m_isConnected = false;
+                emit mqttOnConnecting(0);
+                LOG_ERR(TAG, "Cannot subscribe to topic %s", MQTT_SYNC_TOPIC);
+                QEventLoop loop;
+                QTimer::singleShot(5000, &loop, &QEventLoop::quit);
+                loop.exec();
+            }
+            return;
+        }
         sm_mqtt_client_process(m_mqttClient);
     });
     timer->start();
 
     connect(m_fakeMqtt, &fake_mqtt::mqttReceiveMsg, this, &MainWindow::on_mqttReiceive);
     connect(this, &MainWindow::mqttSendMsgSig, m_fakeMqtt, &fake_mqtt::on_mqttSendMsg);
+    connect(this, &MainWindow::mqttSendMsgSig, this, &MainWindow::on_mqttSend);
 
     connect(this, &MainWindow::newCaseInfoMsg, &m_mapView, &map_view::on_newCaseMsg);
     connect(&m_mapView, &map_view::configCaseInfo, this, &MainWindow::on_configCaseInfo);
@@ -107,21 +133,31 @@ void MainWindow::on_configCaseInfo(QString name, caseData_t data)
 
     QString jsonString = QString(
                              "{\n"
-                             "    \"thread_hold\": %1,\n"
+                             "    \"auto\": %1,\n"
                              "    \"state\": %2,\n"
-                             "    \"auto\": %3,\n"
+                             "    \"thread_hold\": %3,\n"
                              "    \"start_time\": %4,\n"
                              "    \"stop_time\": %5,\n"
                              "    \"sync_time\": %6\n"
                              "}"
-                             ).arg(data.m_threadHold)
-                             .arg(data.m_state)
+                             )
                              .arg(data.m_isAuto)
+                             .arg(data.m_state)
+                             .arg(data.m_threadHold)
                              .arg(data.m_startTime)
                              .arg(data.m_stopTime)
                              .arg(data.m_syncTime);
 
     emit mqttSendMsgSig(topic, jsonString);
+}
+
+void MainWindow::on_mqttSend(QString _topic, QString _msg)
+{
+    if(sm_mqtt_client_publish(m_mqttClient, _topic.toStdString().c_str(), _msg.toStdString().c_str(), _msg.size()) >= 0){
+        QMessageBox::information(this, "Xác nhận điều khiển", "gửi lệnh điều khiển thành công");
+    }else{
+        QMessageBox::critical(this, "Xác nhận điều khiển", "gửi lệnh điều khiển thất bại");
+    }
 }
 
 void MainWindow::publish_cb(void **state, mqtt_response_publish *publish)

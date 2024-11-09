@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Bản tin điều khiển</string>
   </property>
   <widget class="QLineEdit" name="lineEdit_topic">
    <property name="geometry">
@@ -68,7 +68,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </rect>
    </property>
    <property name="text">
-    <string>Publish</string>
+    <string>Gửi</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

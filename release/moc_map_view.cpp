@@ -52,6 +52,9 @@ constexpr auto qt_meta_stringdata_CLASSmap_viewENDCLASS = QtMocHelpers::stringDa
     "caseData_t",
     "data",
     "on_newCaseMsg",
+    "on_mqttConnecting",
+    "uint8_t",
+    "stt",
     "on_userConfirmAddCase",
     "_name",
     "_lat",
@@ -61,7 +64,10 @@ constexpr auto qt_meta_stringdata_CLASSmap_viewENDCLASS = QtMocHelpers::stringDa
     "on_pushButton_removeCase_clicked",
     "on_pushButton_caseDetail_clicked",
     "on_listWidget_caseList_currentTextChanged",
-    "currentText"
+    "currentText",
+    "on_listWidget_caseList_itemDoubleClicked",
+    "QListWidgetItem*",
+    "item"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -74,7 +80,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -82,20 +88,22 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
        6,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    4,   86,    2, 0x06,    1 /* Public */,
-       4,    1,   95,    2, 0x06,    6 /* Public */,
-       5,    2,   98,    2, 0x06,    8 /* Public */,
-       6,    2,  103,    2, 0x06,   11 /* Public */,
-       7,    0,  108,    2, 0x06,   14 /* Public */,
-       8,    2,  109,    2, 0x06,   15 /* Public */,
+       1,    4,   98,    2, 0x06,    1 /* Public */,
+       4,    1,  107,    2, 0x06,    6 /* Public */,
+       5,    2,  110,    2, 0x06,    8 /* Public */,
+       6,    2,  115,    2, 0x06,   11 /* Public */,
+       7,    0,  120,    2, 0x06,   14 /* Public */,
+       8,    2,  121,    2, 0x06,   15 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      12,    2,  114,    2, 0x0a,   18 /* Public */,
-      13,    4,  119,    2, 0x08,   21 /* Private */,
-      18,    0,  128,    2, 0x08,   26 /* Private */,
-      19,    0,  129,    2, 0x08,   27 /* Private */,
-      20,    0,  130,    2, 0x08,   28 /* Private */,
-      21,    1,  131,    2, 0x08,   29 /* Private */,
+      12,    2,  126,    2, 0x0a,   18 /* Public */,
+      13,    1,  131,    2, 0x0a,   21 /* Public */,
+      16,    4,  134,    2, 0x08,   23 /* Private */,
+      21,    0,  143,    2, 0x08,   28 /* Private */,
+      22,    0,  144,    2, 0x08,   29 /* Private */,
+      23,    0,  145,    2, 0x08,   30 /* Private */,
+      24,    1,  146,    2, 0x08,   31 /* Private */,
+      26,    1,  149,    2, 0x08,   33 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3, 0x80000000 | 3,    2,    2,    2,    2,
@@ -107,11 +115,13 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSmap_viewENDCLASS[] = {
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString, 0x80000000 | 10,    9,   11,
-    QMetaType::Void, QMetaType::QString, QMetaType::Float, QMetaType::Float, QMetaType::QString,   14,   15,   16,   17,
+    QMetaType::Void, 0x80000000 | 14,   15,
+    QMetaType::Void, QMetaType::QString, QMetaType::Float, QMetaType::Float, QMetaType::QString,   17,   18,   19,   20,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   22,
+    QMetaType::Void, QMetaType::QString,   25,
+    QMetaType::Void, 0x80000000 | 27,   28,
 
        0        // eod
 };
@@ -152,6 +162,9 @@ Q_CONSTINIT const QMetaObject map_view::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
         QtPrivate::TypeAndForceComplete<caseData_t, std::false_type>,
+        // method 'on_mqttConnecting'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<uint8_t, std::false_type>,
         // method 'on_userConfirmAddCase'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
@@ -166,7 +179,10 @@ Q_CONSTINIT const QMetaObject map_view::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_listWidget_caseList_currentTextChanged'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>
+        QtPrivate::TypeAndForceComplete<const QString &, std::false_type>,
+        // method 'on_listWidget_caseList_itemDoubleClicked'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QListWidgetItem *, std::false_type>
     >,
     nullptr
 } };
@@ -184,11 +200,13 @@ void map_view::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         case 4: _t->removeAllMarkSig(); break;
         case 5: _t->configCaseInfo((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
         case 6: _t->on_newCaseMsg((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<caseData_t>>(_a[2]))); break;
-        case 7: _t->on_userConfirmAddCase((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
-        case 8: _t->on_pushButton_addCase_pressed(); break;
-        case 9: _t->on_pushButton_removeCase_clicked(); break;
-        case 10: _t->on_pushButton_caseDetail_clicked(); break;
-        case 11: _t->on_listWidget_caseList_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 7: _t->on_mqttConnecting((*reinterpret_cast< std::add_pointer_t<uint8_t>>(_a[1]))); break;
+        case 8: _t->on_userConfirmAddCase((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<float>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[4]))); break;
+        case 9: _t->on_pushButton_addCase_pressed(); break;
+        case 10: _t->on_pushButton_removeCase_clicked(); break;
+        case 11: _t->on_pushButton_caseDetail_clicked(); break;
+        case 12: _t->on_listWidget_caseList_currentTextChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 13: _t->on_listWidget_caseList_itemDoubleClicked((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -257,13 +275,13 @@ int map_view::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 14)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 12;
+        _id -= 14;
     }
     return _id;
 }

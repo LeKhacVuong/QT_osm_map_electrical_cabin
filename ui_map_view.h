@@ -14,6 +14,7 @@
 #include <QtQuickWidgets/QQuickWidget>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QVBoxLayout>
@@ -31,6 +32,7 @@ public:
     QPushButton *pushButton_addCase;
     QPushButton *pushButton_removeCase;
     QPushButton *pushButton_caseDetail;
+    QLabel *label_info;
 
     void setupUi(QDialog *map_view)
     {
@@ -69,7 +71,7 @@ public:
         quickWidget_mapView->setResizeMode(QQuickWidget::ResizeMode::SizeRootObjectToView);
         layoutWidget = new QWidget(map_view);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(20, 560, 271, 131));
+        layoutWidget->setGeometry(QRect(20, 550, 271, 131));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -142,6 +144,9 @@ public:
 
         verticalLayout->addWidget(pushButton_caseDetail);
 
+        label_info = new QLabel(map_view);
+        label_info->setObjectName("label_info");
+        label_info->setGeometry(QRect(40, 700, 231, 16));
 
         retranslateUi(map_view);
 
@@ -154,6 +159,7 @@ public:
         pushButton_addCase->setText(QCoreApplication::translate("map_view", "Th\303\252m t\341\273\247 \304\221i\341\273\207n", nullptr));
         pushButton_removeCase->setText(QCoreApplication::translate("map_view", "X\303\263a t\341\273\247 \304\221i\341\273\207n", nullptr));
         pushButton_caseDetail->setText(QCoreApplication::translate("map_view", "\304\220i\341\273\201u khi\341\273\203n t\341\273\247 \304\221i\341\273\207n", nullptr));
+        label_info->setText(QString());
     } // retranslateUi
 
 };

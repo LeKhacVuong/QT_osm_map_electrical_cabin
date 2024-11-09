@@ -22,6 +22,7 @@ class MainWindow : public QMainWindow
 signals:
     void newCaseInfoMsg(QString name, caseData_t data);
     void mqttSendMsgSig(QString topic, QString msg);
+    void mqttOnConnecting(uint8_t stt);
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -39,6 +40,8 @@ private slots:
 
     void on_configCaseInfo(QString name, caseData_t data);
 
+    void on_mqttSend(QString _topic, QString _msg);
+
 private:
     static void publish_cb(void** state, struct mqtt_response_publish *publish);
     Ui::MainWindow *ui;
@@ -49,5 +52,7 @@ private:
     sm_mqtt_client_t* m_mqttClient = nullptr;
 
     QTimer* timer = new QTimer(this);
+
+    uint8_t m_isConnected = 0;
 };
 #endif // MAINWINDOW_H

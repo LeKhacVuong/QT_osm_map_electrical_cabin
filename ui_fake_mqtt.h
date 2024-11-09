@@ -61,7 +61,7 @@ public:
 
     void retranslateUi(QDialog *fake_mqtt)
     {
-        fake_mqtt->setWindowTitle(QCoreApplication::translate("fake_mqtt", "Dialog", nullptr));
+        fake_mqtt->setWindowTitle(QCoreApplication::translate("fake_mqtt", "B\341\272\243n tin \304\221i\341\273\201u khi\341\273\203n", nullptr));
         lineEdit_topic->setText(QCoreApplication::translate("fake_mqtt", "electric_cabinet/reponse", nullptr));
         textEdit_msg->setHtml(QCoreApplication::translate("fake_mqtt", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -85,7 +85,7 @@ public:
                         " style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;stop_time&quot; : 600,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;sync_time&quot; : 30</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">}</p></body></html>", nullptr));
-        pushButton_publish->setText(QCoreApplication::translate("fake_mqtt", "Publish", nullptr));
+        pushButton_publish->setText(QCoreApplication::translate("fake_mqtt", "G\341\273\255i", nullptr));
         label->setText(QCoreApplication::translate("fake_mqtt", "Topic", nullptr));
         label_2->setText(QCoreApplication::translate("fake_mqtt", "Message", nullptr));
     } // retranslateUi

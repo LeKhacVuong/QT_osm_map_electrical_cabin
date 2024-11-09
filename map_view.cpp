@@ -8,6 +8,7 @@
 #include <QPainter>
 #include <QBrush>
 #include <QColor>
+#include <QToolTip>
 
 
 #define TAG "mapView"
@@ -16,7 +17,7 @@
 #define NOMAR_COLOR      "lightgreen"
 #define ERROR_COLOR      "yellow"
 
-static QIcon createCircleIcon(const QColor& color, int diameter = 16) {
+static QIcon createCircleIcon(const QColor& color, int diameter = 40) {
     QPixmap pixmap(diameter, diameter);
     pixmap.fill(Qt::transparent); // Đảm bảo nền trong suốt
 
@@ -124,6 +125,8 @@ map_view::map_view(QWidget *parent)
     settings.endArray();
     settings.endGroup();
 
+    ui->listWidget_caseList->setSpacing(5); // Đặt khoảng cách giữa các item
+
     LOG_INF(TAG, "Created map service");
 }
 
@@ -146,11 +149,12 @@ int map_view::mapViewAddCaseMark(QString _name, float _lat, float _lon, QString 
     m_caseList.push_back(info);
 
     QListWidgetItem* item = new QListWidgetItem(createCircleIcon(QColor(_color)), _name);
+    item->setTextAlignment(Qt::AlignCenter);
     item->setForeground(QColor("black"));
     item->setToolTip(_desScrip + "\n Chưa kết nối !!!");
 
     item->setFlags(item->flags() & ~Qt::ItemIsSelectable);
-
+    item->setSizeHint(QSize(230, 40));
     ui->listWidget_caseList->addItem(item);
     ui->listWidget_caseList->setCurrentItem(item);
 
@@ -237,6 +241,13 @@ void map_view::on_newCaseMsg(QString name, caseData_t data)
     }
 }
 
+void map_view::on_mqttConnecting(uint8_t stt)
+{
+    ui->label_info->clear();
+    ui->label_info->setText(stt? "Kết nối thành công" : "Kết nối thất bại");
+    ui->label_info->setAlignment(Qt::AlignCenter);
+}
+
 void map_view::on_userConfirmAddCase(QString _name, float _lat, float _lon, QString _des)
 {
     mapViewAddCaseMark(_name, _lat, _lon, NOT_ACTIVE_COLOR, "Mô tả: " + _des);
@@ -313,4 +324,31 @@ caseGet_t map_view::getCaseByName(QString name)
     return caseGet;
 }
 
+
+
+void map_view::on_listWidget_caseList_itemDoubleClicked(QListWidgetItem *item)
+{
+
+
+    auto caseInfo = getCaseByName(item->text());
+    if(!caseInfo.m_info){
+        return;
+    }
+
+    if (QApplication::mouseButtons() == Qt::LeftButton) {
+
+        if(!caseInfo.m_info->m_isOnline){
+            if(QMessageBox::question(this, "Xác nhận điều khiển", "Tủ điện "+caseInfo.m_info->m_name+" chưa được kết nối, có muốn tiếp tục") == QMessageBox::No){
+                return;
+            }
+        }
+        m_settingDialog.startSetting(*caseInfo.m_info);
+
+        qDebug() << "Left double-clicked on item:" << item->text();
+    } else if (QApplication::mouseButtons() == Qt::RightButton) {
+
+        qDebug() << "Right double-clicked on item:" << item->text();
+    }
+
+}
 

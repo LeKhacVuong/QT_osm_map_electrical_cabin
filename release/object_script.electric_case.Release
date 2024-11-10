@@ -4,7 +4,10 @@ release/electric_case_add.o
 release/fake_mqtt.o
 release/mqtt.o
 release/mqtt_pal.o
+release/sm_mb_master_impl.o
 release/sm_mqtt_client.o
+release/nanomodbus.o
+release/SerialPort.o
 release/qt_utils.o
 release/sm_logger.o
 release/main.o

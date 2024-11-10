@@ -11,8 +11,8 @@ typedef struct{
     int32_t m_phaseC;
     uint8_t m_state;
     uint8_t m_isAuto;
-    uint32_t m_startTime;
-    uint32_t m_stopTime;
+    QString m_startTime;
+    QString m_stopTime;
     uint32_t m_syncTime;
 }caseData_t;
 

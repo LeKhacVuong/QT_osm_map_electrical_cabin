@@ -292,6 +292,7 @@ Makefile: electric_case.pro C:/Qt/6.8.0/llvm-mingw_64/mkspecs/win32-clang-g++/qm
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6QmlWorkerScript.prl \
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Qml.prl \
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Network.prl \
+		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6SerialPort.prl \
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Positioning.prl \
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Sql.prl \
 		C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Core.prl \
@@ -522,6 +523,7 @@ C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6QmlModels.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6QmlWorkerScript.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Qml.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Network.prl:
+C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6SerialPort.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Positioning.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Sql.prl:
 C:/Qt/6.8.0/llvm-mingw_64/lib/Qt6Core.prl:

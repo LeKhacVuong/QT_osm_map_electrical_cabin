@@ -56,30 +56,16 @@ static QString buildCaseDataDes(const caseData_t &data) {
         .arg(data.m_phaseB)
         .arg(data.m_phaseC)
         .arg(data.m_threadHold)
-        .arg(SecToQTime(data.m_startTime).toString("HH:mm:ss"))
-        .arg(SecToQTime(data.m_stopTime).toString("HH:mm:ss"));
+        .arg(data.m_startTime)
+        .arg(data.m_stopTime);
 }
 
 void map_view::closeEvent(QCloseEvent *event)
 {
-    if(QMessageBox::question(this, "Xác nhận đóng ứng dung", "Dữ liệu về tủ điện sẽ được lưu") == QMessageBox::No){
-        event->ignore();
-        return;
-    }
-
-    QSettings settings("YourCompany", "YourApp");
-    settings.beginGroup("Vuong");
-
-    settings.beginWriteArray("caseList");
-    for (int i = 0; i < m_caseList.size(); ++i) {
-        settings.setArrayIndex(i);
-        settings.setValue("name", m_caseList.at(i).m_name);
-        settings.setValue("lat", m_caseList.at(i).m_location.m_lat);
-        settings.setValue("lon", m_caseList.at(i).m_location.m_lon);
-        settings.setValue("des", m_caseList.at(i).m_description);
-    }
-    settings.endArray();
-    settings.endGroup();
+    // if(QMessageBox::question(this, "Xác nhận đóng ứng dung", "Dữ liệu về tủ điện sẽ được lưu") == QMessageBox::No){
+    //     event->ignore();
+    //     return;
+    // }
 }
 
 map_view::map_view(QWidget *parent)
@@ -107,6 +93,8 @@ map_view::map_view(QWidget *parent)
 
     setWindowIcon(QIcon(":/Resource/images/logo_cty.jpg"));
 
+    setWindowFlags(Qt::Window | Qt::WindowMinimizeButtonHint);
+
     QSettings settings("YourCompany", "YourApp");
     settings.beginGroup("Vuong");
 
@@ -132,6 +120,22 @@ map_view::map_view(QWidget *parent)
 
 map_view::~map_view()
 {
+    QSettings settings("YourCompany", "YourApp");
+    settings.beginGroup("Vuong");
+
+    settings.beginWriteArray("caseList");
+    for (int i = 0; i < m_caseList.size(); ++i) {
+        settings.setArrayIndex(i);
+        settings.setValue("name", m_caseList.at(i).m_name);
+        settings.setValue("lat", m_caseList.at(i).m_location.m_lat);
+        settings.setValue("lon", m_caseList.at(i).m_location.m_lon);
+        settings.setValue("des", m_caseList.at(i).m_description);
+    }
+    settings.endArray();
+    settings.endGroup();
+
+    LOG_INF(TAG, "Storage config ^ data success!!!");
+
     delete ui;
 }
 

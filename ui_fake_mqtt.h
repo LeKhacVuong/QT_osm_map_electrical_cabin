@@ -34,16 +34,16 @@ public:
     {
         if (fake_mqtt->objectName().isEmpty())
             fake_mqtt->setObjectName("fake_mqtt");
-        fake_mqtt->resize(700, 462);
+        fake_mqtt->resize(894, 462);
         lineEdit_topic = new QLineEdit(fake_mqtt);
         lineEdit_topic->setObjectName("lineEdit_topic");
-        lineEdit_topic->setGeometry(QRect(90, 20, 211, 22));
+        lineEdit_topic->setGeometry(QRect(90, 20, 311, 22));
         textEdit_msg = new QTextEdit(fake_mqtt);
         textEdit_msg->setObjectName("textEdit_msg");
-        textEdit_msg->setGeometry(QRect(90, 60, 211, 341));
+        textEdit_msg->setGeometry(QRect(90, 60, 311, 341));
         pushButton_publish = new QPushButton(fake_mqtt);
         pushButton_publish->setObjectName("pushButton_publish");
-        pushButton_publish->setGeometry(QRect(230, 410, 75, 24));
+        pushButton_publish->setGeometry(QRect(320, 410, 75, 24));
         label = new QLabel(fake_mqtt);
         label->setObjectName("label");
         label->setGeometry(QRect(20, 20, 49, 16));
@@ -52,7 +52,7 @@ public:
         label_2->setGeometry(QRect(20, 60, 49, 16));
         listWidget = new QListWidget(fake_mqtt);
         listWidget->setObjectName("listWidget");
-        listWidget->setGeometry(QRect(320, 20, 351, 381));
+        listWidget->setGeometry(QRect(420, 20, 351, 381));
 
         retranslateUi(fake_mqtt);
 
@@ -62,7 +62,7 @@ public:
     void retranslateUi(QDialog *fake_mqtt)
     {
         fake_mqtt->setWindowTitle(QCoreApplication::translate("fake_mqtt", "B\341\272\243n tin \304\221i\341\273\201u khi\341\273\203n", nullptr));
-        lineEdit_topic->setText(QCoreApplication::translate("fake_mqtt", "electric_cabinet/reponse", nullptr));
+        lineEdit_topic->setText(QCoreApplication::translate("fake_mqtt", "electric_cabinet/update/xuan_thuy", nullptr));
         textEdit_msg->setHtml(QCoreApplication::translate("fake_mqtt", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -71,18 +71,17 @@ public:
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">{</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;sn&quot; : &quot;xuan_thuy&quot;,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;state&quot; : 1,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-ri"
-                        "ght:0px; -qt-block-indent:0; text-indent:0px;\">&quot;auto&quot; : 1,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;err_code&quot; : 0,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;auto&quot; : 1,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block"
+                        "-indent:0; text-indent:0px;\">&quot;err_code&quot; : 0,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;phase_a&quot; : 1000,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;phase_b&quot; : 9000,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;phase_c&quot; : 5000,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;thread_hold&quot; : 7000,</p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;start_time&quot; : 60,</p>\n"
-"<p"
-                        " style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;stop_time&quot; : 600,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;start_time&quot; : &quot;6:30&quot;,</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;stop_time&quot; : &quot;18:30&"
+                        "quot;,</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&quot;sync_time&quot; : 30</p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">}</p></body></html>", nullptr));
         pushButton_publish->setText(QCoreApplication::translate("fake_mqtt", "G\341\273\255i", nullptr));

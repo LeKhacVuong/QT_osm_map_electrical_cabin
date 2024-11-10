@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>700</width>
+    <width>894</width>
     <height>462</height>
    </rect>
   </property>
@@ -18,12 +18,12 @@
     <rect>
      <x>90</x>
      <y>20</y>
-     <width>211</width>
+     <width>311</width>
      <height>22</height>
     </rect>
    </property>
    <property name="text">
-    <string>electric_cabinet/reponse</string>
+    <string>electric_cabinet/update/xuan_thuy</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="textEdit_msg">
@@ -31,7 +31,7 @@
     <rect>
      <x>90</x>
      <y>60</y>
-     <width>211</width>
+     <width>311</width>
      <height>341</height>
     </rect>
    </property>
@@ -44,7 +44,6 @@ li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;{&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;sn&amp;quot; : &amp;quot;xuan_thuy&amp;quot;,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;state&amp;quot; : 1,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;auto&amp;quot; : 1,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;err_code&amp;quot; : 0,&lt;/p&gt;
@@ -52,8 +51,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_b&amp;quot; : 9000,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_c&amp;quot; : 5000,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;thread_hold&amp;quot; : 7000,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;start_time&amp;quot; : 60,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;stop_time&amp;quot; : 600,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;start_time&amp;quot; : &amp;quot;6:30&amp;quot;,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;stop_time&amp;quot; : &amp;quot;18:30&amp;quot;,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;sync_time&amp;quot; : 30&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;}&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
@@ -61,7 +60,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QPushButton" name="pushButton_publish">
    <property name="geometry">
     <rect>
-     <x>230</x>
+     <x>320</x>
      <y>410</y>
      <width>75</width>
      <height>24</height>
@@ -100,7 +99,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>420</x>
      <y>20</y>
      <width>351</width>
      <height>381</height>

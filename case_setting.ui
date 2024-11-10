@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
-    <height>286</height>
+    <width>573</width>
+    <height>290</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,9 +19,9 @@
   <widget class="QPushButton" name="pushButton_confirm">
    <property name="geometry">
     <rect>
-     <x>290</x>
+     <x>360</x>
      <y>240</y>
-     <width>81</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
@@ -38,9 +38,9 @@
   <widget class="QPushButton" name="pushButton_cancel">
    <property name="geometry">
     <rect>
-     <x>390</x>
+     <x>460</x>
      <y>240</y>
-     <width>81</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
@@ -54,7 +54,7 @@
     <string>Hủy</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -65,7 +65,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3"/>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -79,9 +79,9 @@
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>13</y>
-     <width>451</width>
+     <x>21</x>
+     <y>14</y>
+     <width>531</width>
      <height>221</height>
     </rect>
    </property>
@@ -98,7 +98,7 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>220</width>
           <height>16777215</height>
          </size>
         </property>
@@ -154,7 +154,7 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>220</width>
           <height>16777215</height>
          </size>
         </property>
@@ -187,6 +187,50 @@
      </layout>
     </item>
     <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QLabel" name="label_5">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>220</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="text">
+         <string>Thời gian đồng bộ (giây)</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="lineEdit_syncTime">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>35</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <bold>true</bold>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_6">
       <item>
        <widget class="QLabel" name="label_6">
@@ -198,7 +242,7 @@
         </property>
         <property name="maximumSize">
          <size>
-          <width>170</width>
+          <width>220</width>
           <height>16777215</height>
          </size>
         </property>
@@ -259,6 +303,12 @@
     </item>
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Shape::NoFrame</enum>
       </property>
@@ -271,7 +321,7 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>449</width>
+          <width>531</width>
           <height>39</height>
          </rect>
         </property>
@@ -286,7 +336,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>170</width>
+             <width>220</width>
              <height>16777215</height>
             </size>
            </property>
@@ -360,159 +410,36 @@
       </widget>
       <widget class="QWidget" name="page_2_auto">
        <widget class="QWidget" name="">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>441</width>
-          <height>84</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_4">
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>170</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Thời gian bật</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QHBoxLayout" name="horizontalLayout">
-             <item>
-              <widget class="QTimeEdit" name="timeEdit_start">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="dateTime">
-                <datetime>
-                 <hour>6</hour>
-                 <minute>0</minute>
-                 <second>0</second>
-                 <year>1999</year>
-                 <month>12</month>
-                 <day>28</day>
-                </datetime>
-               </property>
-               <property name="maximumTime">
-                <time>
-                 <hour>23</hour>
-                 <minute>59</minute>
-                 <second>59</second>
-                </time>
-               </property>
-               <property name="timeSpec">
-                <enum>Qt::TimeSpec::UTC</enum>
-               </property>
-               <property name="time">
-                <time>
-                 <hour>6</hour>
-                 <minute>0</minute>
-                 <second>0</second>
-                </time>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="label_4">
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>Đến</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QTimeEdit" name="timeEdit_stop">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>35</height>
-                </size>
-               </property>
-               <property name="font">
-                <font>
-                 <pointsize>10</pointsize>
-                 <bold>true</bold>
-                </font>
-               </property>
-               <property name="time">
-                <time>
-                 <hour>18</hour>
-                 <minute>0</minute>
-                 <second>0</second>
-                </time>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
+          <widget class="QLabel" name="label_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>170</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>10</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Thời gian bật</string>
+           </property>
+          </widget>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
-            <widget class="QLabel" name="label_5">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>170</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>10</pointsize>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>Thời gian đồng bộ (giây)</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="lineEdit_syncTime">
+            <widget class="QTimeEdit" name="timeEdit_start">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -521,8 +448,81 @@
              </property>
              <property name="font">
               <font>
+               <pointsize>10</pointsize>
                <bold>true</bold>
               </font>
+             </property>
+             <property name="dateTime">
+              <datetime>
+               <hour>6</hour>
+               <minute>0</minute>
+               <second>0</second>
+               <year>1999</year>
+               <month>12</month>
+               <day>26</day>
+              </datetime>
+             </property>
+             <property name="maximumTime">
+              <time>
+               <hour>23</hour>
+               <minute>59</minute>
+               <second>59</second>
+              </time>
+             </property>
+             <property name="displayFormat">
+              <string>h:mm</string>
+             </property>
+             <property name="timeSpec">
+              <enum>Qt::TimeSpec::UTC</enum>
+             </property>
+             <property name="time">
+              <time>
+               <hour>6</hour>
+               <minute>0</minute>
+               <second>0</second>
+              </time>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_4">
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>Đến</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTimeEdit" name="timeEdit_stop">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>10</pointsize>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="displayFormat">
+              <string>h:mm</string>
+             </property>
+             <property name="time">
+              <time>
+               <hour>18</hour>
+               <minute>0</minute>
+               <second>0</second>
+              </time>
              </property>
             </widget>
            </item>

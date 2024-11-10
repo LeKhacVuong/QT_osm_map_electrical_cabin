@@ -1,4 +1,4 @@
-QT       += core gui qml network
+QT       += core gui qml network serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets quick location positioning quickwidgets sql
 
@@ -19,7 +19,10 @@ SOURCES += \
     fake_mqtt.cpp \
     libs/MQTT-C/src/mqtt.c \
     libs/MQTT-C/src/mqtt_pal.c \
+    libs/modbus/mb_master/sm_mb_master_impl.c \
     libs/mqtt/mqtt_client/sm_mqtt_client.c \
+    libs/nanoModbus/nanomodbus.c \
+    libs/utils/SerialPort.cpp \
     libs/utils/qt_utils.cpp \
     libs/utils/sm_logger.c \
     main.cpp \
@@ -36,7 +39,12 @@ HEADERS += \
     libs/MQTT-C/inc/mqtt.h \
     libs/MQTT-C/inc/mqtt_pal.h \
     libs/MQTT-C/inc/posix_sockets.h \
+    libs/modbus/mb_master/sm_mb_master_if.h \
+    libs/modbus/mb_master/sm_mb_master_impl.h \
+    libs/modbus/sm_modbus_define.h \
     libs/mqtt/mqtt_client/sm_mqtt_client.h \
+    libs/nanoModbus/nanomodbus.h \
+    libs/utils/SerialPort.h \
     libs/utils/qt_utils.h \
     libs/utils/sm_logger.h \
     mainwindow.h \
@@ -64,7 +72,11 @@ INCLUDEPATH += \
     libs/utils \
     libs/MQTT-C \
     libs/MQTT-C/inc \
-    libs/mqtt/mqtt_client
+    libs/mqtt/mqtt_client \
+    libs/nanoModbus \
+    libs/modbus \
+    libs/modbus/mb_master
 
 DISTFILES += \
+    libs/modbus/mb_master/CMakeLists.txt \
     logo_cty.ico

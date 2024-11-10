@@ -5,6 +5,9 @@
 -IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/MQTT-C
 -IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/MQTT-C/inc
 -IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/mqtt/mqtt_client
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/nanoModbus
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/modbus
+-IC:/Users/vypa0/Desktop/lkv_github/QT_osm_map_electrical_cabin/libs/modbus/mb_master
 -IC:/Qt/6.8.0/llvm-mingw_64/include
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtQuickWidgets
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets
@@ -34,6 +37,7 @@
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtQml
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtQmlIntegration
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtNetwork
+-IC:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtPositioning
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtCore/6.8.0
 -IC:/Qt/6.8.0/llvm-mingw_64/include/QtCore/6.8.0/QtCore

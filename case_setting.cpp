@@ -50,10 +50,9 @@ void case_setting::startSetting(caseInfo_t _caseInfo)
     }
 
     ui->stackedWidget->setCurrentIndex(_caseInfo.m_data.m_isAuto);
-    ui->timeEdit_start->setTime(SecToQTime(_caseInfo.m_data.m_startTime));
-    ui->timeEdit_stop->setTime(SecToQTime(_caseInfo.m_data.m_stopTime));
+    ui->timeEdit_start->setTime(QTime::fromString(_caseInfo.m_data.m_startTime, "HH:mm"));
+    ui->timeEdit_stop->setTime(QTime::fromString(_caseInfo.m_data.m_stopTime, "HH:mm"));
     ui->lineEdit_syncTime->setText(QString::number(_caseInfo.m_data.m_syncTime));
-
     show();
 }
 
@@ -66,8 +65,8 @@ void case_setting::on_pushButton_confirm_clicked()
     info.m_data.m_state = ui->radioButton_on->isChecked();
     info.m_data.m_threadHold = ui->lineEdit_threadHold->text().toInt(&ok);
     info.m_data.m_syncTime = ui->lineEdit_syncTime->text().toInt(&ok);
-    info.m_data.m_startTime = QTimeToSec(ui->timeEdit_start->time());
-    info.m_data.m_stopTime = QTimeToSec(ui->timeEdit_stop->time());
+    info.m_data.m_startTime = ui->timeEdit_start->time().toString("HH:mm");
+    info.m_data.m_stopTime = ui->timeEdit_stop->time().toString("HH:mm");
 
     if(QMessageBox::question(this, "Xác nhận điều khiển", "Gửi lệnh điều khiển đến tủ: " + name) == QMessageBox::No){
         return;

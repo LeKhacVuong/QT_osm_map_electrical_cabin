@@ -8,6 +8,7 @@
 #include <string>
 #include <QSerialPortInfo>
 #include "qt_utils.h"
+#include "QInputDialog"
 
 #define TAG "main"
 
@@ -46,8 +47,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->pushButton_openMap->setIcon(QIcon(":/Resource/images/map_icon_btn.png"));
     ui->pushButton_openMap->setIconSize(ui->pushButton_openMap->size());
+
     ui->pushButton_refresh->setIcon(QIcon(":/Resource/images/refresh_btn.png"));
     ui->pushButton_refresh->setIconSize(ui->pushButton_refresh->size());
+
+    ui->pushButton_export->setIcon(QIcon(":/Resource/images/export.png"));
+    ui->pushButton_export->setIconSize(ui->pushButton_export->size()/1.5);
+
+    ui->pushButton_import->setIcon(QIcon(":/Resource/images/import.png"));
+    ui->pushButton_import->setIconSize(ui->pushButton_import->size()/1.5);
 
     setFixedSize(size());
 
@@ -115,6 +123,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete m_fakeMqtt;
     delete ui;
 }
 
@@ -124,6 +133,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
         event->ignore();
         return;
     }
+    m_mapView->saveConfig();
+    delete m_fakeMqtt;
 }
 
 void MainWindow::on_action_caseMap_triggered()
@@ -134,7 +145,25 @@ void MainWindow::on_action_caseMap_triggered()
 
 void MainWindow::on_action_fakeMqtt_triggered()
 {
-    m_fakeMqtt->show();
+    bool ok;
+    QString password = QInputDialog::getText(
+        nullptr,
+        "Yêu cầu nhập mật khẩu",
+        "Vui lòng nhập mật khẩu:",
+        QLineEdit::Password, // Cách hiển thị để nhập mật khẩu (ẩn ký tự)
+        "",
+        &ok
+        );
+
+    if (ok && !password.isEmpty()) {
+        qDebug() << "Mật khẩu đã nhập là:" << password;
+        if(password == QString("vuonglk123")){
+            m_fakeMqtt->show();
+        }
+
+    } else {
+        qDebug() << "Người dùng đã hủy hoặc không nhập mật khẩu.";
+    }
 }
 
 void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
@@ -156,9 +185,9 @@ void MainWindow::on_mqttReiceive(QString _topic, QString _msg)
     data.m_err = jsonObj.value("err_code").toInt();
     data.m_syncTime = jsonObj.value("sync_time").toInt();
     data.m_isAuto = jsonObj.value("auto").toInt();
-    data.m_phaseA = jsonObj.value("phase_a").toInt();
-    data.m_phaseB = jsonObj.value("phase_b").toInt();
-    data.m_phaseC = jsonObj.value("phase_c").toInt();
+    data.m_phaseA = jsonObj.value("phase_1").toInt();
+    data.m_phaseB = jsonObj.value("phase_2").toInt();
+    data.m_phaseC = jsonObj.value("phase_3").toInt();
     data.m_threadHold = jsonObj.value("thread_hold").toInt();
     data.m_startTime = jsonObj.value("start_time").toString();
     data.m_stopTime = jsonObj.value("stop_time").toString();

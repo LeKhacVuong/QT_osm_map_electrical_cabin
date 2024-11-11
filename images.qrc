@@ -3,6 +3,8 @@
         <file>Resource/images/logo_cty.jpg</file>
         <file>Resource/images/map_icon_btn.png</file>
         <file>Resource/images/refresh_btn.png</file>
+        <file>Resource/images/export.png</file>
+        <file>Resource/images/import.png</file>
     </qresource>
     <qresource prefix="/icon/maker">
         <file>Resource/images/red_marker.png</file>

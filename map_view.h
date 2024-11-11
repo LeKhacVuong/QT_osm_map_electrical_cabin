@@ -40,6 +40,8 @@ public:
 
     int mapViewRemoveAllCaseMark();
 
+    void saveConfig();
+
 public slots:
     void on_newCaseMsg(QString name, caseData_t data);
 

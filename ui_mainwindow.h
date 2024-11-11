@@ -71,6 +71,8 @@ public:
     QRadioButton *radioButton_manual;
     QPushButton *pushButton_sendConfig;
     QPushButton *pushButton_connectCabinet;
+    QPushButton *pushButton_import;
+    QPushButton *pushButton_export;
     QMenuBar *menubar;
     QMenu *menuT_y_ch_n;
     QStatusBar *statusbar;
@@ -89,10 +91,12 @@ public:
 "}"));
         action_caseMap = new QAction(MainWindow);
         action_caseMap->setObjectName("action_caseMap");
-        QIcon icon1(QIcon::fromTheme(QIcon::ThemeIcon::ZoomIn));
+        QIcon icon1(QIcon::fromTheme(QIcon::ThemeIcon::HelpFaq));
         action_caseMap->setIcon(icon1);
         action_fakeMqtt = new QAction(MainWindow);
         action_fakeMqtt->setObjectName("action_fakeMqtt");
+        QIcon icon2(QIcon::fromTheme(QIcon::ThemeIcon::CameraWeb));
+        action_fakeMqtt->setIcon(icon2);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName("centralwidget");
         pushButton_openMap = new QPushButton(centralwidget);
@@ -125,9 +129,14 @@ public:
         font1.setPointSize(14);
         font1.setBold(true);
         comboBox_comList->setFont(font1);
-        comboBox_comList->setStyleSheet(QString::fromUtf8("background-color: #66CC66;\n"
-"border-radius: 8px;\n"
-""));
+        comboBox_comList->setStyleSheet(QString::fromUtf8("QComboBox{\n"
+"	background-color: #66CC66;\n"
+"	border-radius: 8px;\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    background-color: limegreen; /* M\303\240u n\341\273\201n khi hover */\n"
+"}"));
         pushButton_scanCabinet = new QPushButton(centralwidget);
         pushButton_scanCabinet->setObjectName("pushButton_scanCabinet");
         pushButton_scanCabinet->setGeometry(QRect(30, 70, 401, 51));
@@ -466,6 +475,28 @@ public:
 "QPushButton:pressed {\n"
 "    background-color: #3e8e41; /* M\303\240u n\341\273\201n khi \341\272\245n */\n"
 "}"));
+        pushButton_import = new QPushButton(centralwidget);
+        pushButton_import->setObjectName("pushButton_import");
+        pushButton_import->setGeometry(QRect(500, 210, 120, 120));
+        pushButton_import->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: lightgreen;\n"
+"    color: white;\n"
+"	border-radius: 15px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: limegreen;\n"
+"}"));
+        pushButton_export = new QPushButton(centralwidget);
+        pushButton_export->setObjectName("pushButton_export");
+        pushButton_export->setGeometry(QRect(500, 20, 120, 120));
+        pushButton_export->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: lightgreen;\n"
+"    color: white;\n"
+"	border-radius: 15px;\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: limegreen;\n"
+"}"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName("menubar");
@@ -501,9 +532,15 @@ public:
 #if QT_CONFIG(shortcut)
         action_fakeMqtt->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+T", nullptr));
 #endif // QT_CONFIG(shortcut)
+#if QT_CONFIG(tooltip)
+        pushButton_openMap->setToolTip(QCoreApplication::translate("MainWindow", "B\341\272\243n \304\221\341\273\223 t\341\273\247 \304\221i\341\273\207n", nullptr));
+#endif // QT_CONFIG(tooltip)
         pushButton_openMap->setText(QString());
         label->setText(QCoreApplication::translate("MainWindow", "C\341\273\225ng USB", nullptr));
         pushButton_scanCabinet->setText(QCoreApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i c\341\273\225ng COM", nullptr));
+#if QT_CONFIG(tooltip)
+        pushButton_refresh->setToolTip(QCoreApplication::translate("MainWindow", "L\303\240m m\341\273\233i ", nullptr));
+#endif // QT_CONFIG(tooltip)
         pushButton_refresh->setText(QString());
         label_5->setText(QCoreApplication::translate("MainWindow", "<html><head/><body><p>Ch\306\260a k\341\272\277t n\341\273\221i v\341\273\233i t\341\273\247 \304\221i\341\273\207n...</p></body></html>", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "Ch\341\272\277 \304\221\341\273\231 ho\341\272\241t \304\221\341\273\231ng", nullptr));
@@ -518,7 +555,18 @@ public:
         radioButton_auto->setText(QCoreApplication::translate("MainWindow", "T\341\273\261 \304\221\341\273\231ng", nullptr));
         radioButton_manual->setText(QCoreApplication::translate("MainWindow", "Th\341\273\247 c\303\264ng", nullptr));
         pushButton_sendConfig->setText(QCoreApplication::translate("MainWindow", "C\303\240i \304\221\341\272\267t", nullptr));
+#if QT_CONFIG(tooltip)
+        pushButton_connectCabinet->setToolTip(QString());
+#endif // QT_CONFIG(tooltip)
         pushButton_connectCabinet->setText(QCoreApplication::translate("MainWindow", "K\341\272\277t n\341\273\221i", nullptr));
+#if QT_CONFIG(tooltip)
+        pushButton_import->setToolTip(QCoreApplication::translate("MainWindow", "N\341\272\241p file d\341\273\257 li\341\273\207u t\341\273\247 \304\221i\341\273\207n", nullptr));
+#endif // QT_CONFIG(tooltip)
+        pushButton_import->setText(QString());
+#if QT_CONFIG(tooltip)
+        pushButton_export->setToolTip(QCoreApplication::translate("MainWindow", "Xu\341\272\245t file d\341\273\257 li\341\273\207u t\341\273\247 \304\221i\341\273\207n", nullptr));
+#endif // QT_CONFIG(tooltip)
+        pushButton_export->setText(QString());
         menuT_y_ch_n->setTitle(QCoreApplication::translate("MainWindow", "T\303\271y ch\341\273\215n", nullptr));
         toolBar->setWindowTitle(QCoreApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi

@@ -78,7 +78,7 @@ private:
     Ui::MainWindow *ui;
 
     map_view* m_mapView = new map_view(this);
-    fake_mqtt* m_fakeMqtt = new fake_mqtt(this);
+    fake_mqtt* m_fakeMqtt = new fake_mqtt();
 
     sm_mqtt_client_t* m_mqttClient = nullptr;
 

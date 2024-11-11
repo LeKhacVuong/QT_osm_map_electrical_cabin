@@ -38,16 +38,17 @@ static void changeCircleColor(QListWidgetItem* item, const QColor& newColor) {
 static QString buildCaseDataDes(const caseData_t &data) {
     QDateTime receivedTime = QDateTime::currentDateTime();
     return QString("\n\n"
-                   "Trạng thái: %1\n"
-                   "Chế độ hoạt động: %2\n"
-                   "Mã lỗi: %3\n"
                    "Thời gian nhận: %4\n"
+                   "Trạng thái: %1\n"
+                   "Mã lỗi: %3\n"
+                   "Chế độ hoạt động: %2\n"
+                   "Ngưỡng cảnh báo: %8\n"
                    "Pha A: %5\n"
                    "Pha B: %6\n"
                    "Pha C: %7\n"
-                   "Ngưỡng cảnh báo: %8\n"
                    "Thời gian bật: %9\n"
-                   "Thời gian tắt: %10")
+                   "Thời gian tắt: %10\n"
+                   "Thời gian đồng bộ: %11")
         .arg(data.m_state?"Bật":"Tắt")
         .arg(data.m_isAuto?"Tự động":"Thủ công")
         .arg(data.m_err)
@@ -57,7 +58,8 @@ static QString buildCaseDataDes(const caseData_t &data) {
         .arg(data.m_phaseC)
         .arg(data.m_threadHold)
         .arg(data.m_startTime)
-        .arg(data.m_stopTime);
+        .arg(data.m_stopTime)
+        .arg(data.m_syncTime);
 }
 
 void map_view::closeEvent(QCloseEvent *event)
@@ -120,22 +122,6 @@ map_view::map_view(QWidget *parent)
 
 map_view::~map_view()
 {
-    QSettings settings("YourCompany", "YourApp");
-    settings.beginGroup("Vuong");
-
-    settings.beginWriteArray("caseList");
-    for (int i = 0; i < m_caseList.size(); ++i) {
-        settings.setArrayIndex(i);
-        settings.setValue("name", m_caseList.at(i).m_name);
-        settings.setValue("lat", m_caseList.at(i).m_location.m_lat);
-        settings.setValue("lon", m_caseList.at(i).m_location.m_lon);
-        settings.setValue("des", m_caseList.at(i).m_description);
-    }
-    settings.endArray();
-    settings.endGroup();
-
-    LOG_INF(TAG, "Storage config ^ data success!!!");
-
     delete ui;
 }
 
@@ -212,6 +198,25 @@ int map_view::mapViewChangeColorCaseMark(QString _name, QString _color)
 int map_view::mapViewRemoveAllCaseMark()
 {
 
+}
+
+void map_view::saveConfig()
+{
+    QSettings settings("YourCompany", "YourApp");
+    settings.beginGroup("Vuong");
+
+    settings.beginWriteArray("caseList");
+    for (int i = 0; i < m_caseList.size(); ++i) {
+        settings.setArrayIndex(i);
+        settings.setValue("name", m_caseList.at(i).m_name);
+        settings.setValue("lat", m_caseList.at(i).m_location.m_lat);
+        settings.setValue("lon", m_caseList.at(i).m_location.m_lon);
+        settings.setValue("des", m_caseList.at(i).m_description);
+    }
+    settings.endArray();
+    settings.endGroup();
+
+    LOG_INF(TAG, "Storage config ^ data success!!!");
 }
 
 void map_view::on_newCaseMsg(QString name, caseData_t data)

@@ -39,7 +39,7 @@ void electric_case_add::on_pushButton_confirm_clicked()
     float lon = ui->lineEdit_caseLon->text().toFloat(&ok);
     QString des = ui->textEdit_caseDes->toPlainText();
     ui->pushButton_confirm->setEnabled(0);
-    QTimer::singleShot(3000, [&](){
+    QTimer::singleShot(5000, [&](){
         ui->pushButton_confirm->setEnabled(1);
     });
 

@@ -205,6 +205,8 @@ release/qrc_images.cpp: images.qrc \
 		Resource/images/red_marker.png \
 		Resource/images/map_icon_btn.png \
 		Resource/images/refresh_btn.png \
+		Resource/images/export.png \
+		Resource/images/import.png \
 		Resource/images/logo_cty.jpg
 	C:\Qt\6.8.0\llvm-mingw_64\bin\rcc.exe -name images --no-zstd images.qrc -o release\qrc_images.cpp
 
@@ -1891,6 +1893,7 @@ release/moc_mainwindow.cpp: mainwindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qtserialportexports.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/QSerialPortInfo \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qserialportinfo.h \
+		libs/utils/elapsed_timer.h \
 		release/mocinclude.opt \
 		release/moc_predefs.h \
 		C:/Qt/6.8.0/llvm-mingw_64/bin/moc.exe
@@ -3465,6 +3468,9 @@ release/fake_mqtt.o: fake_mqtt.cpp fake_mqtt.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QVariant \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qapplication.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QCheckBox \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qcheckbox.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qframe.h \
@@ -3496,9 +3502,11 @@ release/fake_mqtt.o: fake_mqtt.cpp fake_mqtt.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QTextEdit \
-		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qtextedit.h
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qtextedit.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QTime \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/qcalendar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\fake_mqtt.o fake_mqtt.cpp
 
 release/mqtt.o: libs/MQTT-C/src/mqtt.c libs/MQTT-C/inc/mqtt.h \
@@ -4565,6 +4573,7 @@ release/main.o: main.cpp mainwindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qtserialportexports.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/QSerialPortInfo \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qserialportinfo.h \
+		libs/utils/elapsed_timer.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o main.cpp
@@ -5226,6 +5235,7 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qtserialportexports.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/QSerialPortInfo \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtSerialPort/qserialportinfo.h \
+		libs/utils/elapsed_timer.h \
 		ui_mainwindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtGui/QAction \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtGui/QIcon \
@@ -5261,7 +5271,9 @@ release/mainwindow.o: mainwindow.cpp mainwindow.h \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QJsonObject \
 		C:/Qt/6.8.0/llvm-mingw_64/include/QtCore/QJsonValue \
 		libs/utils/qt_utils.h \
-		C:/Qt/6.8.0/llvm-mingw_64/include/QtGui/QRegularExpressionValidator
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtGui/QRegularExpressionValidator \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/QInputDialog \
+		C:/Qt/6.8.0/llvm-mingw_64/include/QtWidgets/qinputdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\mainwindow.o mainwindow.cpp
 
 release/map_view.o: map_view.cpp map_view.h \

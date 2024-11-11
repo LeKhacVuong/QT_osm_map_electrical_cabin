@@ -76,7 +76,7 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_4"/>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>21</x>
@@ -313,7 +313,7 @@
        <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_1_manual">
        <widget class="QWidget" name="layoutWidget">
@@ -409,7 +409,15 @@
        </widget>
       </widget>
       <widget class="QWidget" name="page_2_auto">
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>531</width>
+          <height>39</height>
+         </rect>
+        </property>
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QLabel" name="label_3">
@@ -421,7 +429,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>170</width>
+             <width>220</width>
              <height>16777215</height>
             </size>
            </property>
@@ -459,7 +467,7 @@
                <second>0</second>
                <year>1999</year>
                <month>12</month>
-               <day>26</day>
+               <day>25</day>
               </datetime>
              </property>
              <property name="maximumTime">

@@ -32,6 +32,9 @@
       <height>120</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>Bản đồ tủ điện</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
     background-color: lightgreen;
@@ -92,9 +95,14 @@ border-radius: 8px;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #66CC66;
-border-radius: 8px;
-</string>
+     <string notr="true">QComboBox{
+	background-color: #66CC66;
+	border-radius: 8px;
+}
+
+QComboBox:hover {
+    background-color: limegreen; /* Màu nền khi hover */
+}</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_scanCabinet">
@@ -142,6 +150,9 @@ QPushButton:pressed {
       <width>44</width>
       <height>44</height>
      </rect>
+    </property>
+    <property name="toolTip">
+     <string>Làm mới </string>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
@@ -807,6 +818,9 @@ QPushButton:pressed {
       <bold>true</bold>
      </font>
     </property>
+    <property name="toolTip">
+     <string/>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
     background-color: #5BC0FE; /* Màu nền ban đầu */
@@ -831,6 +845,58 @@ QPushButton:pressed {
     </property>
     <property name="text">
      <string>Kết nối</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_import">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>210</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Nạp file dữ liệu tủ điện</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: lightgreen;
+    color: white;
+	border-radius: 15px;
+}
+QPushButton:hover {
+    background-color: limegreen;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_export">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>20</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>Xuất file dữ liệu tủ điện</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: lightgreen;
+    color: white;
+	border-radius: 15px;
+}
+QPushButton:hover {
+    background-color: limegreen;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
@@ -866,13 +932,16 @@ QPushButton:pressed {
   </widget>
   <action name="action_caseMap">
    <property name="icon">
-    <iconset theme="QIcon::ThemeIcon::ZoomIn"/>
+    <iconset theme="QIcon::ThemeIcon::HelpFaq"/>
    </property>
    <property name="text">
     <string>Phiên bản phần mềm</string>
    </property>
   </action>
   <action name="action_fakeMqtt">
+   <property name="icon">
+    <iconset theme="QIcon::ThemeIcon::CameraWeb"/>
+   </property>
    <property name="text">
     <string>Nhà phát triển</string>
    </property>

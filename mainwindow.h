@@ -8,6 +8,7 @@
 #include "sm_mqtt_client.h"
 #include "sm_mb_master_impl.h"
 #include "SerialPort.h"
+#include "elapsed_timer.h"
 
 #define MQTT_SYNC_TOPIC "electric_cabinet/update/#"
 
@@ -21,9 +22,10 @@ typedef struct{
     char m_sn[32];
     uint32_t m_cur_thread_hold;
     uint32_t m_sync_time;
-    uint32_t m_start_time;
-    uint32_t m_stop_time;
+    uint8_t m_start_time[8];
+    uint8_t m_stop_time[8];
     uint8_t m_auto;
+    uint8_t m_state;
 }setting_info_t;
 
 class MainWindow : public QMainWindow
@@ -34,6 +36,7 @@ signals:
     void newCaseInfoMsg(QString name, caseData_t data);
     void mqttSendMsgSig(QString topic, QString msg);
     void mqttOnConnecting(uint8_t stt);
+    void showLogSig(QString log);
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -81,11 +84,13 @@ private:
 
     QTimer* timer = new QTimer(this);
 
-    uint8_t m_isConnected = 0;
+    uint8_t m_isSubscribed = 0;
 
     SerialPort* m_serialPort = nullptr;
 
     sm_mb_master_t* m_mb_master = nullptr;
+
+    elapsed_timer_t m_connect_timer;
 
 };
 #endif // MAINWINDOW_H

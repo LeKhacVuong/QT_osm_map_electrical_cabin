@@ -47,18 +47,18 @@ public:
     {
         if (electric_case_add->objectName().isEmpty())
             electric_case_add->setObjectName("electric_case_add");
-        electric_case_add->resize(455, 239);
+        electric_case_add->resize(455, 254);
         QIcon icon(QIcon::fromTheme(QIcon::ThemeIcon::DocumentSave));
         electric_case_add->setWindowIcon(icon);
         pushButton_confirm = new QPushButton(electric_case_add);
         pushButton_confirm->setObjectName("pushButton_confirm");
-        pushButton_confirm->setGeometry(QRect(270, 200, 75, 24));
+        pushButton_confirm->setGeometry(QRect(270, 220, 75, 24));
         pushButton_cancel = new QPushButton(electric_case_add);
         pushButton_cancel->setObjectName("pushButton_cancel");
-        pushButton_cancel->setGeometry(QRect(360, 200, 75, 24));
+        pushButton_cancel->setGeometry(QRect(360, 220, 75, 24));
         layoutWidget = new QWidget(electric_case_add);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(10, 10, 431, 181));
+        layoutWidget->setGeometry(QRect(10, 10, 431, 200));
         verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName("verticalLayout");
         verticalLayout->setContentsMargins(0, 0, 0, 0);

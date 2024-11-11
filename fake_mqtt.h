@@ -22,6 +22,8 @@ signals:
 public slots:
     void on_mqttSendMsg(QString topic, QString msg);
 
+    void on_showLog(QString msg);
+
 private slots:
     void on_pushButton_publish_clicked();
 

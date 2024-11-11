@@ -3,6 +3,8 @@
 #include <QRegularExpressionValidator>
 #include <QLineEdit>
 
+void qtDelay(uint32_t _mili);
+
 void setLineEditSnFomartOnly(QLineEdit* _lineEdit, uint32_t _maxLen);
 
 void setLineEditNumberIntergerOnly(QLineEdit* _lineEdit, int32_t _min, int32_t _max);

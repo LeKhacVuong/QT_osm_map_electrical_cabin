@@ -7,14 +7,20 @@
 #include <QJsonValue>
 #include <string>
 #include <QSerialPortInfo>
+#include "qt_utils.h"
 
 #define TAG "main"
 
-void log_put(const char* _log){
-    qDebug() << _log << "\n";
+MainWindow* g_mainWindow = nullptr;
+
+int64_t get_tick_count(){
+    return GetTickCount();
 }
 
-MainWindow* g_mainWindow = nullptr;
+void log_put(const char* _log){
+    qDebug() << _log << "\n";
+    emit g_mainWindow->showLogSig(QString::fromUtf8(_log) + "\n");
+}
 
 int32_t MainWindow::mb_master_send_if(const uint8_t* _data, int32_t _len, int32_t _timeout, void* _arg){
     MainWindow* _this = (MainWindow*)_arg;
@@ -31,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    g_mainWindow = this;
+
     ui->setupUi(this);
     sm_logger_init(log_put, LOG_LEVEL_DEBUG);
     LOG_INF(TAG, "Start application");
@@ -45,47 +53,46 @@ MainWindow::MainWindow(QWidget *parent)
 
     // m_mapView->show();
     // m_fakeMqtt->show();
-    g_mainWindow = this;
     sm_mqtt_client_connection_info_t info = {.broker_addr = "test.mosquitto.org", .port = "1883"};
 
-
     connect(this, &MainWindow::mqttOnConnecting, m_mapView, &map_view::on_mqttConnecting);
-    connect(ui->radioButton_manual ,&QRadioButton::clicked, this, [&]{ui->stackedWidget_auto->setCurrentIndex(0);});
-    connect(ui->radioButton_auto ,&QRadioButton::clicked, this, [&]{ui->stackedWidget_auto->setCurrentIndex(1);});
+    connect(ui->radioButton_manual ,&QRadioButton::clicked, this, [&]{ui->stackedWidget_auto->setCurrentIndex(1);});
+    connect(ui->radioButton_auto ,&QRadioButton::clicked, this, [&]{ui->stackedWidget_auto->setCurrentIndex(0);});
+
+    setLineEditNumberIntergerOnly(ui->lineEdit_settingThreadHold, 0, 100*10000);
+    setLineEditNumberIntergerOnly(ui->lineEdit_settingSyncTime, 0, 60*60*24);
+    setLineEditSnFomartOnly(ui->lineEdit_settingSn, 32);
 
     m_mqttClient = sm_mqtt_client_create(info, publish_cb);
-
-    timer->setInterval(1);
-    connect(timer, &QTimer::timeout, [&]() {
-        if(!m_mqttClient){
-            LOG_ERR(TAG, "Mqtt client error, recreate it");
-            m_mqttClient = sm_mqtt_client_create(info, publish_cb);
-            QEventLoop loop;
-            QTimer::singleShot(5000, &loop, &QEventLoop::quit);
-            loop.exec();
-            emit mqttOnConnecting(0);
-            return;
-        }
-        if(!m_isConnected){
-            if(sm_mqtt_client_subscribe(m_mqttClient, MQTT_SYNC_TOPIC) >= 0){
-                emit mqttOnConnecting(1);
-                m_isConnected = true;
-            }else{
-                m_isConnected = false;
-                emit mqttOnConnecting(0);
-                LOG_ERR(TAG, "Cannot subscribe to topic %s", MQTT_SYNC_TOPIC);
-                QEventLoop loop;
-                QTimer::singleShot(5000, &loop, &QEventLoop::quit);
-                loop.exec();
+    if(!m_mqttClient){
+        LOG_ERR(TAG, "Mqtt client error, recreate it");
+        m_mqttClient = sm_mqtt_client_create(info, publish_cb);
+        emit mqttOnConnecting(0);
+    }else{
+        elapsed_timer_pass(&m_connect_timer);
+        timer->setInterval(1);
+        connect(timer, &QTimer::timeout, [&]() {
+            if(!m_isSubscribed && !elapsed_timer_get_remain(&m_connect_timer)){
+                if(sm_mqtt_client_subscribe(m_mqttClient, MQTT_SYNC_TOPIC) >= 0){
+                    emit mqttOnConnecting(1);
+                    m_isSubscribed = true;
+                }else{
+                    m_isSubscribed = false;
+                    emit mqttOnConnecting(0);
+                    LOG_ERR(TAG, "Cannot subscribe to topic %s", MQTT_SYNC_TOPIC);
+                }
+                elapsed_timer_resetz(&m_connect_timer, 2000);
+                return;
             }
-            return;
-        }
-        sm_mqtt_client_process(m_mqttClient);
-    });
-    timer->start();
+            sm_mqtt_client_process(m_mqttClient);
+        });
+        timer->start();
+    }
 
     connect(m_fakeMqtt, &fake_mqtt::mqttReceiveMsg, this, &MainWindow::on_mqttReiceive);
     connect(this, &MainWindow::mqttSendMsgSig, m_fakeMqtt, &fake_mqtt::on_mqttSendMsg);
+    connect(this, &MainWindow::showLogSig, m_fakeMqtt, &fake_mqtt::on_showLog);
+
     connect(this, &MainWindow::mqttSendMsgSig, this, &MainWindow::on_mqttSend);
 
     connect(this, &MainWindow::newCaseInfoMsg, m_mapView, &map_view::on_newCaseMsg);
@@ -102,8 +109,8 @@ MainWindow::MainWindow(QWidget *parent)
         LOG_ERR(TAG, "Cannot create modbus master");
     }
 
-
     on_pushButton_refresh_clicked();
+
 }
 
 MainWindow::~MainWindow()
@@ -113,11 +120,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    if(QMessageBox::question(this, "Exit app ?", "App will be close") == QMessageBox::No){
+    if(QMessageBox::question(this, "Thoát ứng dụng", "Dữ liệu của bạn sẽ được lưu") == QMessageBox::No){
         event->ignore();
         return;
     }
-    delete m_fakeMqtt;
 }
 
 void MainWindow::on_action_caseMap_triggered()
@@ -230,11 +236,15 @@ void MainWindow::enable_config_ui(bool _enable)
 void MainWindow::on_pushButton_openMap_clicked()
 {
     m_mapView->showMaximized();
+    if(!m_mqttClient){
+        QMessageBox::warning(this, "Kết nối mạng bị mất", "Vui lòng khởi động lại ứng dụng");
+    }
 }
 
 
 void MainWindow::on_pushButton_refresh_clicked()
 {
+    LOG_INF(TAG, "Load com list");
     ui->comboBox_comList->clear();
     const auto ports = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &port : ports) {
@@ -248,7 +258,7 @@ void MainWindow::on_pushButton_scanCabinet_clicked()
     if(!m_serialPort){
         QString com = ui->comboBox_comList->currentText();
         if(ui->comboBox_comList->currentText().isEmpty()){
-            qDebug() << "Not select com yet";
+            LOG_WRN(TAG, "Not select com yet");
             return;
         }
         m_serialPort = new SerialPort(com.toStdString());
@@ -285,15 +295,91 @@ void MainWindow::on_pushButton_connectCabinet_clicked()
         return;
     }
 
+    uint16_t reg[35];
+
+    int ret = sm_sv_mb_master_read_hold_regs(m_mb_master, 1, 0, 35, reg);
+    if(ret != MODBUS_ERROR_NONE){
+        QMessageBox::warning(this, "Không thể kết nối đến tủ điện", "Vui lòng kiểm tra lại kết nối");
+        ui->stackedWidget_connect->setCurrentIndex(0);
+        ui->pushButton_sendConfig->setEnabled(0);
+        return;
+    }
+
+    ui->stackedWidget_connect->setCurrentIndex(1);
+    setting_info_t info;
+
+    memcpy(&info, reg, sizeof(setting_info_t));
+
+    ui->lineEdit_settingSn->setText(QString::fromUtf8(info.m_sn));
+    ui->lineEdit_settingSyncTime->setText(QString::number(info.m_sync_time));
+    ui->lineEdit_settingThreadHold->setText(QString::number(info.m_cur_thread_hold));
+    if(info.m_auto){
+        ui->radioButton_auto->setChecked(1);
+        ui->stackedWidget_auto->setCurrentIndex(0);
+    }else{
+        ui->stackedWidget_auto->setCurrentIndex(1);
+        ui->radioButton_manual->setChecked(1);
+    }
 
 
+    ui->timeEdit_timeStart->setTime(QTime::fromString(QString::fromUtf8((char*)info.m_start_time, 5), "HH:mm"));
+    ui->timeEdit_timeStop->setTime(QTime::fromString(QString::fromUtf8((char*)info.m_stop_time, 5), "HH:mm"));
+    if(info.m_state){
+        ui->radioButton_on->setChecked(1);
+    }else{
+        ui->radioButton_off->setChecked(1);
+    }
 
-
+    ui->pushButton_sendConfig->setEnabled(1);
 }
 
 
 void MainWindow::on_pushButton_sendConfig_clicked()
 {
+    if(!m_serialPort){
+        QMessageBox::critical(this, "Lỗi", "Chưa mở cổng COM");
+        return;
+    }
 
+    bool ok;
+
+    setting_info_t info;
+    info.m_auto = ui->radioButton_auto->isChecked();
+    info.m_cur_thread_hold = ui->lineEdit_settingThreadHold->text().toInt(&ok);
+    memcpyFromLineEdit(ui->lineEdit_settingSn, (uint8_t*)info.m_sn, 32);
+    info.m_state = ui->radioButton_on->isChecked();
+    info.m_sync_time = ui->lineEdit_settingSyncTime->text().toInt(&ok);
+
+    QString time;
+    memset(info.m_start_time, 0, 8);
+    memset(info.m_stop_time, 0, 8);
+    time = ui->timeEdit_timeStart->time().toString("HH:mm");
+    memcpy(info.m_start_time, time.toStdString().c_str(), qMin(8, time.size()));
+    time = ui->timeEdit_timeStop->time().toString("HH:mm");
+    memcpy(info.m_stop_time, time.toStdString().c_str(), qMin(8, time.size()));
+
+
+    LOG_INF(TAG, "Setting to cabinet %s", info.m_sn);
+    LOG_INF(TAG, "Thread hold: %d", info.m_cur_thread_hold);
+    LOG_INF(TAG, "Mode: %s", info.m_auto?"Auto":"Manual");
+    LOG_INF(TAG, "State: %s", info.m_state?"On":"Off");
+    LOG_INF(TAG, "Auto from: %s to %s", info.m_start_time, info.m_stop_time);
+    LOG_INF(TAG, "Sync time: %d", info.m_sync_time);
+
+
+    if(QMessageBox::question(this, "Xác nhận cài đặt", QString("Bạn có muốn cài đặt tủ điện %1").arg(info.m_sn)) == QMessageBox::No){
+        return;
+    }
+
+
+    uint16_t reg[35] = {0,};
+    memcpy(reg, &info, sizeof(setting_info_t));
+
+    int ret = sm_sv_mb_master_write_multi_regs(m_mb_master, 1, 0, 35, reg);
+    if(ret != MODBUS_ERROR_NONE){
+        QMessageBox::warning(this, "Cài đặt thất bại", QString("Kiểm tra kết nối với tủ điện %1").arg(info.m_sn));
+    }else{
+        QMessageBox::information(this, "Cài đặt thành công", QString("Cài đặt thành công tủ điện %1").arg(info.m_sn));
+    }
 }
 

@@ -92,7 +92,7 @@ border-radius: 8px;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: lightgreen;
+     <string notr="true">background-color: #66CC66;
 border-radius: 8px;
 </string>
     </property>
@@ -115,7 +115,7 @@ border-radius: 8px;
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    background-color: lightgreen; /* Màu nền ban đầu */
+    background-color: #5BC0FE; /* Màu nền ban đầu */
     color: black;              /* Màu chữ */
     border-radius: 8px;        /* Bo góc */
     padding: 10px;             /* Khoảng cách bên trong nút */
@@ -145,7 +145,7 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    background-color: lightgreen;
+    background-color: #5BC0FE;
     color: white;
 	border-radius: 8px;
 }
@@ -234,7 +234,7 @@ font 15px</string>
      </widget>
     </widget>
     <widget class="QWidget" name="page_setting">
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="lineEdit_settingSn">
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -246,10 +246,11 @@ font 15px</string>
       <property name="font">
        <font>
         <pointsize>11</pointsize>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: lightgreen;
+       <string notr="true">background-color: #66CC66;
 border-radius: 8px;
 </string>
       </property>
@@ -314,7 +315,7 @@ border-radius: 8px;
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="lineEdit_settingThreadHold">
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -326,10 +327,11 @@ border-radius: 8px;
       <property name="font">
        <font>
         <pointsize>11</pointsize>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: lightgreen;
+       <string notr="true">background-color: #66CC66;
 border-radius: 8px;
 </string>
       </property>
@@ -377,10 +379,10 @@ border-radius: 8px;
        <enum>QFrame::Shape::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="page_manual">
-       <widget class="QTimeEdit" name="timeEdit">
+      <widget class="QWidget" name="page_auto">
+       <widget class="QTimeEdit" name="timeEdit_timeStart">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -391,21 +393,36 @@ border-radius: 8px;
         </property>
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
           <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: lightgreen;
-border-radius: 8px;
-font 15px
+         <string notr="true">QTimeEdit {
+    background-color: #66CC66;
+    border-radius: 8px;
+    font: 15px;
+    font-weight: bold; /* Làm cho văn bản in đậm */
+    padding: 5px; /* Tăng khoảng cách bên trong để dễ click */
+}
+
+QTimeEdit::up-button, QTimeEdit::down-button {
+    width: 20px; /* Tăng kích thước chiều rộng */
+    height: 20px; /* Tăng kích thước chiều cao */
+}
+
+QTimeEdit::up-arrow, QTimeEdit::down-arrow {
+    width: 15px; /* Tăng kích thước mũi tên */
+    height: 15px;
+}
 </string>
         </property>
         <property name="displayFormat">
          <string>h:mm</string>
         </property>
        </widget>
-       <widget class="QTimeEdit" name="timeEdit_2">
+       <widget class="QTimeEdit" name="timeEdit_timeStop">
         <property name="geometry">
          <rect>
           <x>260</x>
@@ -416,14 +433,29 @@ font 15px
         </property>
         <property name="font">
          <font>
-          <pointsize>11</pointsize>
+          <pointsize>-1</pointsize>
+          <italic>false</italic>
           <bold>true</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">background-color: lightgreen;
-border-radius: 8px;
-font 15px
+         <string notr="true">QTimeEdit {
+    background-color: #66CC66;
+    border-radius: 8px;
+    font: 15px;
+    font-weight: bold; /* Làm cho văn bản in đậm */
+    padding: 5px; /* Tăng khoảng cách bên trong để dễ click */
+}
+
+QTimeEdit::up-button, QTimeEdit::down-button {
+    width: 20px; /* Tăng kích thước chiều rộng */
+    height: 20px; /* Tăng kích thước chiều cao */
+}
+
+QTimeEdit::up-arrow, QTimeEdit::down-arrow {
+    width: 15px; /* Tăng kích thước mũi tên */
+    height: 15px;
+}
 </string>
         </property>
         <property name="displayFormat">
@@ -461,8 +493,8 @@ border-radius: 8px;
         </property>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_auto">
-       <widget class="QWidget" name="">
+      <widget class="QWidget" name="page_manual">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>0</x>
@@ -497,7 +529,7 @@ border-radius: 8px;
 QRadioButton {
     font-size: 16px;               /* Kích thước chữ */
     padding: 5px;                  /* Khoảng cách bên trong */
-	background-color: lightgreen;
+	background-color: #66CC66;
 	border-radius: 8px;  /* Bo góc để trông mềm mại */
 }
 QRadioButton::indicator {
@@ -541,7 +573,7 @@ QRadioButton::indicator {
 QRadioButton {
     font-size: 16px;               /* Kích thước chữ */
     padding: 5px;                  /* Khoảng cách bên trong */
-	background-color: lightgreen;
+	background-color: #66CC66;
 	border-radius: 8px;  /* Bo góc để trông mềm mại */
 }
 QRadioButton::indicator {
@@ -594,7 +626,7 @@ border-radius: 8px;
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="lineEdit_settingSyncTime">
       <property name="geometry">
        <rect>
         <x>200</x>
@@ -606,15 +638,16 @@ border-radius: 8px;
       <property name="font">
        <font>
         <pointsize>11</pointsize>
+        <bold>true</bold>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: lightgreen;
+       <string notr="true">background-color: #66CC66;
 border-radius: 8px;
 </string>
       </property>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -649,7 +682,7 @@ border-radius: 8px;
 QRadioButton {
     font-size: 16px;               /* Kích thước chữ */
     padding: 5px;                  /* Khoảng cách bên trong */
-	background-color: lightgreen;
+	background-color: #66CC66;
 	border-radius: 8px;  /* Bo góc để trông mềm mại */
 }
 QRadioButton::indicator {
@@ -693,7 +726,7 @@ QRadioButton::indicator {
 QRadioButton {
     font-size: 16px;               /* Kích thước chữ */
     padding: 5px;                  /* Khoảng cách bên trong */
-	background-color: lightgreen;
+	background-color: #66CC66;
 	border-radius: 8px;  /* Bo góc để trông mềm mại */
 }
 QRadioButton::indicator {
@@ -734,16 +767,16 @@ QRadioButton::indicator {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    background-color: lightgreen; /* Màu nền ban đầu */
+    background-color: #5BC0FE; /* Màu nền ban đầu */
     color: black;              /* Màu chữ */
     border-radius: 8px;        /* Bo góc */
     padding: 10px;             /* Khoảng cách bên trong nút */
     font: bold 20px;           /* Kiểu chữ */
 }
 
-QRadioButton:disabled {
-    color: gray;                   /* Màu chữ khi disable */
-    background-color: #d3d3d3;     /* Màu nền khi disable */
+QPushButton:disabled {
+    color: black;                   /* Màu chữ khi disable */
+    background-color: lightgray;     /* Màu nền khi disable */
 }
 
 QPushButton:hover {
@@ -776,16 +809,16 @@ QPushButton:pressed {
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton {
-    background-color: lightgreen; /* Màu nền ban đầu */
+    background-color: #5BC0FE; /* Màu nền ban đầu */
     color: black;              /* Màu chữ */
     border-radius: 8px;        /* Bo góc */
     padding: 10px;             /* Khoảng cách bên trong nút */
     font: bold 20px;           /* Kiểu chữ */
 }
 
-QRadioButton:disabled {
-    color: gray;                   /* Màu chữ khi disable */
-    background-color: #d3d3d3;     /* Màu nền khi disable */
+QPushButton:disabled {
+    color: black;                   /* Màu chữ khi disable */
+    background-color: lightgray;     /* Màu nền khi disable */
 }
 
 QPushButton:hover {
@@ -836,12 +869,12 @@ QPushButton:pressed {
     <iconset theme="QIcon::ThemeIcon::ZoomIn"/>
    </property>
    <property name="text">
-    <string>Bản đồ lắp đặt</string>
+    <string>Phiên bản phần mềm</string>
    </property>
   </action>
   <action name="action_fakeMqtt">
    <property name="text">
-    <string>Fake mqtt</string>
+    <string>Nhà phát triển</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+T</string>

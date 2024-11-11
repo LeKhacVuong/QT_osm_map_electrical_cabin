@@ -48,24 +48,24 @@ public:
     QWidget *page_notConnect;
     QLabel *label_5;
     QWidget *page_setting;
-    QLineEdit *lineEdit;
+    QLineEdit *lineEdit_settingSn;
     QLabel *label_4;
     QLabel *label_2;
-    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_settingThreadHold;
     QLabel *label_3;
     QStackedWidget *stackedWidget_auto;
-    QWidget *page_manual;
-    QTimeEdit *timeEdit;
-    QTimeEdit *timeEdit_2;
-    QLabel *label_7;
     QWidget *page_auto;
-    QWidget *widget;
+    QTimeEdit *timeEdit_timeStart;
+    QTimeEdit *timeEdit_timeStop;
+    QLabel *label_7;
+    QWidget *page_manual;
+    QWidget *layoutWidget;
     QHBoxLayout *horizontalLayout_3;
     QRadioButton *radioButton_on;
     QRadioButton *radioButton_off;
     QLabel *label_6;
-    QLineEdit *lineEdit_3;
-    QWidget *widget1;
+    QLineEdit *lineEdit_settingSyncTime;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QRadioButton *radioButton_auto;
     QRadioButton *radioButton_manual;
@@ -125,7 +125,7 @@ public:
         font1.setPointSize(14);
         font1.setBold(true);
         comboBox_comList->setFont(font1);
-        comboBox_comList->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
+        comboBox_comList->setStyleSheet(QString::fromUtf8("background-color: #66CC66;\n"
 "border-radius: 8px;\n"
 ""));
         pushButton_scanCabinet = new QPushButton(centralwidget);
@@ -136,7 +136,7 @@ public:
         font2.setItalic(false);
         pushButton_scanCabinet->setFont(font2);
         pushButton_scanCabinet->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: lightgreen; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    background-color: #5BC0FE; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
 "    color: black;              /* M\303\240u ch\341\273\257 */\n"
 "    border-radius: 8px;        /* Bo g\303\263c */\n"
 "    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
@@ -154,7 +154,7 @@ public:
         pushButton_refresh->setObjectName("pushButton_refresh");
         pushButton_refresh->setGeometry(QRect(390, 20, 44, 44));
         pushButton_refresh->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: lightgreen;\n"
+"    background-color: #5BC0FE;\n"
 "    color: white;\n"
 "	border-radius: 8px;\n"
 "}\n"
@@ -193,22 +193,20 @@ public:
         stackedWidget_connect->addWidget(page_notConnect);
         page_setting = new QWidget();
         page_setting->setObjectName("page_setting");
-        lineEdit = new QLineEdit(page_setting);
-        lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(200, 0, 201, 44));
+        lineEdit_settingSn = new QLineEdit(page_setting);
+        lineEdit_settingSn->setObjectName("lineEdit_settingSn");
+        lineEdit_settingSn->setGeometry(QRect(200, 0, 201, 44));
         QFont font4;
         font4.setPointSize(11);
-        lineEdit->setFont(font4);
-        lineEdit->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
+        font4.setBold(true);
+        lineEdit_settingSn->setFont(font4);
+        lineEdit_settingSn->setStyleSheet(QString::fromUtf8("background-color: #66CC66;\n"
 "border-radius: 8px;\n"
 ""));
         label_4 = new QLabel(page_setting);
         label_4->setObjectName("label_4");
         label_4->setGeometry(QRect(90, 150, 221, 44));
-        QFont font5;
-        font5.setPointSize(11);
-        font5.setBold(true);
-        label_4->setFont(font5);
+        label_4->setFont(font4);
         label_4->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
 "border-radius: 8px;\n"
 ""));
@@ -217,23 +215,23 @@ public:
         label_2 = new QLabel(page_setting);
         label_2->setObjectName("label_2");
         label_2->setGeometry(QRect(0, 0, 196, 44));
-        label_2->setFont(font5);
+        label_2->setFont(font4);
         label_2->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
 "border-radius: 8px;\n"
 ""));
         label_2->setFrameShape(QFrame::Shape::NoFrame);
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        lineEdit_2 = new QLineEdit(page_setting);
-        lineEdit_2->setObjectName("lineEdit_2");
-        lineEdit_2->setGeometry(QRect(200, 50, 201, 44));
-        lineEdit_2->setFont(font4);
-        lineEdit_2->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
+        lineEdit_settingThreadHold = new QLineEdit(page_setting);
+        lineEdit_settingThreadHold->setObjectName("lineEdit_settingThreadHold");
+        lineEdit_settingThreadHold->setGeometry(QRect(200, 50, 201, 44));
+        lineEdit_settingThreadHold->setFont(font4);
+        lineEdit_settingThreadHold->setStyleSheet(QString::fromUtf8("background-color: #66CC66;\n"
 "border-radius: 8px;\n"
 ""));
         label_3 = new QLabel(page_setting);
         label_3->setObjectName("label_3");
         label_3->setGeometry(QRect(0, 50, 196, 44));
-        label_3->setFont(font5);
+        label_3->setFont(font4);
         label_3->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
 "border-radius: 8px;\n"
 ""));
@@ -243,25 +241,53 @@ public:
         stackedWidget_auto->setObjectName("stackedWidget_auto");
         stackedWidget_auto->setGeometry(QRect(0, 250, 411, 61));
         stackedWidget_auto->setFrameShape(QFrame::Shape::NoFrame);
-        page_manual = new QWidget();
-        page_manual->setObjectName("page_manual");
-        timeEdit = new QTimeEdit(page_manual);
-        timeEdit->setObjectName("timeEdit");
-        timeEdit->setGeometry(QRect(0, 0, 141, 44));
-        timeEdit->setFont(font5);
-        timeEdit->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
-"border-radius: 8px;\n"
-"font 15px\n"
+        page_auto = new QWidget();
+        page_auto->setObjectName("page_auto");
+        timeEdit_timeStart = new QTimeEdit(page_auto);
+        timeEdit_timeStart->setObjectName("timeEdit_timeStart");
+        timeEdit_timeStart->setGeometry(QRect(0, 0, 141, 44));
+        timeEdit_timeStart->setFont(font2);
+        timeEdit_timeStart->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
+"    background-color: #66CC66;\n"
+"    border-radius: 8px;\n"
+"    font: 15px;\n"
+"    font-weight: bold; /* L\303\240m cho v\304\203n b\341\272\243n in \304\221\341\272\255m */\n"
+"    padding: 5px; /* T\304\203ng kho\341\272\243ng c\303\241ch b\303\252n trong \304\221\341\273\203 d\341\273\205 click */\n"
+"}\n"
+"\n"
+"QTimeEdit::up-button, QTimeEdit::down-button {\n"
+"    width: 20px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c chi\341\273\201u r\341\273\231ng */\n"
+"    height: 20px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c chi\341\273\201u cao */\n"
+"}\n"
+"\n"
+"QTimeEdit::up-arrow, QTimeEdit::down-arrow {\n"
+"    width: 15px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c m\305\251i t\303\252n */\n"
+"    height: 15px;\n"
+"}\n"
 ""));
-        timeEdit_2 = new QTimeEdit(page_manual);
-        timeEdit_2->setObjectName("timeEdit_2");
-        timeEdit_2->setGeometry(QRect(260, 0, 141, 44));
-        timeEdit_2->setFont(font5);
-        timeEdit_2->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
-"border-radius: 8px;\n"
-"font 15px\n"
+        timeEdit_timeStop = new QTimeEdit(page_auto);
+        timeEdit_timeStop->setObjectName("timeEdit_timeStop");
+        timeEdit_timeStop->setGeometry(QRect(260, 0, 141, 44));
+        timeEdit_timeStop->setFont(font2);
+        timeEdit_timeStop->setStyleSheet(QString::fromUtf8("QTimeEdit {\n"
+"    background-color: #66CC66;\n"
+"    border-radius: 8px;\n"
+"    font: 15px;\n"
+"    font-weight: bold; /* L\303\240m cho v\304\203n b\341\272\243n in \304\221\341\272\255m */\n"
+"    padding: 5px; /* T\304\203ng kho\341\272\243ng c\303\241ch b\303\252n trong \304\221\341\273\203 d\341\273\205 click */\n"
+"}\n"
+"\n"
+"QTimeEdit::up-button, QTimeEdit::down-button {\n"
+"    width: 20px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c chi\341\273\201u r\341\273\231ng */\n"
+"    height: 20px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c chi\341\273\201u cao */\n"
+"}\n"
+"\n"
+"QTimeEdit::up-arrow, QTimeEdit::down-arrow {\n"
+"    width: 15px; /* T\304\203ng k\303\255ch th\306\260\341\273\233c m\305\251i t\303\252n */\n"
+"    height: 15px;\n"
+"}\n"
 ""));
-        label_7 = new QLabel(page_manual);
+        label_7 = new QLabel(page_auto);
         label_7->setObjectName("label_7");
         label_7->setGeometry(QRect(150, 0, 91, 44));
         label_7->setFont(font);
@@ -270,16 +296,16 @@ public:
 ""));
         label_7->setFrameShape(QFrame::Shape::NoFrame);
         label_7->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        stackedWidget_auto->addWidget(page_manual);
-        page_auto = new QWidget();
-        page_auto->setObjectName("page_auto");
-        widget = new QWidget(page_auto);
-        widget->setObjectName("widget");
-        widget->setGeometry(QRect(0, 0, 401, 51));
-        horizontalLayout_3 = new QHBoxLayout(widget);
+        stackedWidget_auto->addWidget(page_auto);
+        page_manual = new QWidget();
+        page_manual->setObjectName("page_manual");
+        layoutWidget = new QWidget(page_manual);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(0, 0, 401, 51));
+        horizontalLayout_3 = new QHBoxLayout(layoutWidget);
         horizontalLayout_3->setObjectName("horizontalLayout_3");
         horizontalLayout_3->setContentsMargins(0, 0, 0, 0);
-        radioButton_on = new QRadioButton(widget);
+        radioButton_on = new QRadioButton(layoutWidget);
         radioButton_on->setObjectName("radioButton_on");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Fixed);
         sizePolicy.setHorizontalStretch(0);
@@ -287,14 +313,14 @@ public:
         sizePolicy.setHeightForWidth(radioButton_on->sizePolicy().hasHeightForWidth());
         radioButton_on->setSizePolicy(sizePolicy);
         radioButton_on->setMinimumSize(QSize(0, 44));
-        QFont font6;
-        font6.setBold(true);
-        radioButton_on->setFont(font6);
+        QFont font5;
+        font5.setBold(true);
+        radioButton_on->setFont(font5);
         radioButton_on->setStyleSheet(QString::fromUtf8("\n"
 "QRadioButton {\n"
 "    font-size: 16px;               /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 */\n"
 "    padding: 5px;                  /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
-"	background-color: lightgreen;\n"
+"	background-color: #66CC66;\n"
 "	border-radius: 8px;  /* Bo g\303\263c \304\221\341\273\203 tr\303\264ng m\341\273\201m m\341\272\241i */\n"
 "}\n"
 "QRadioButton::indicator {\n"
@@ -305,17 +331,17 @@ public:
 
         horizontalLayout_3->addWidget(radioButton_on);
 
-        radioButton_off = new QRadioButton(widget);
+        radioButton_off = new QRadioButton(layoutWidget);
         radioButton_off->setObjectName("radioButton_off");
         sizePolicy.setHeightForWidth(radioButton_off->sizePolicy().hasHeightForWidth());
         radioButton_off->setSizePolicy(sizePolicy);
         radioButton_off->setMinimumSize(QSize(0, 44));
-        radioButton_off->setFont(font6);
+        radioButton_off->setFont(font5);
         radioButton_off->setStyleSheet(QString::fromUtf8("\n"
 "QRadioButton {\n"
 "    font-size: 16px;               /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 */\n"
 "    padding: 5px;                  /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
-"	background-color: lightgreen;\n"
+"	background-color: #66CC66;\n"
 "	border-radius: 8px;  /* Bo g\303\263c \304\221\341\273\203 tr\303\264ng m\341\273\201m m\341\272\241i */\n"
 "}\n"
 "QRadioButton::indicator {\n"
@@ -326,40 +352,40 @@ public:
 
         horizontalLayout_3->addWidget(radioButton_off);
 
-        stackedWidget_auto->addWidget(page_auto);
+        stackedWidget_auto->addWidget(page_manual);
         label_6 = new QLabel(page_setting);
         label_6->setObjectName("label_6");
         label_6->setGeometry(QRect(0, 100, 196, 44));
-        label_6->setFont(font5);
+        label_6->setFont(font4);
         label_6->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
 "border-radius: 8px;\n"
 ""));
         label_6->setFrameShape(QFrame::Shape::NoFrame);
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        lineEdit_3 = new QLineEdit(page_setting);
-        lineEdit_3->setObjectName("lineEdit_3");
-        lineEdit_3->setGeometry(QRect(200, 100, 201, 44));
-        lineEdit_3->setFont(font4);
-        lineEdit_3->setStyleSheet(QString::fromUtf8("background-color: lightgreen;\n"
+        lineEdit_settingSyncTime = new QLineEdit(page_setting);
+        lineEdit_settingSyncTime->setObjectName("lineEdit_settingSyncTime");
+        lineEdit_settingSyncTime->setGeometry(QRect(200, 100, 201, 44));
+        lineEdit_settingSyncTime->setFont(font4);
+        lineEdit_settingSyncTime->setStyleSheet(QString::fromUtf8("background-color: #66CC66;\n"
 "border-radius: 8px;\n"
 ""));
-        widget1 = new QWidget(page_setting);
-        widget1->setObjectName("widget1");
-        widget1->setGeometry(QRect(0, 200, 401, 51));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(page_setting);
+        layoutWidget1->setObjectName("layoutWidget1");
+        layoutWidget1->setGeometry(QRect(0, 200, 401, 51));
+        horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        radioButton_auto = new QRadioButton(widget1);
+        radioButton_auto = new QRadioButton(layoutWidget1);
         radioButton_auto->setObjectName("radioButton_auto");
         sizePolicy.setHeightForWidth(radioButton_auto->sizePolicy().hasHeightForWidth());
         radioButton_auto->setSizePolicy(sizePolicy);
         radioButton_auto->setMinimumSize(QSize(0, 44));
-        radioButton_auto->setFont(font6);
+        radioButton_auto->setFont(font5);
         radioButton_auto->setStyleSheet(QString::fromUtf8("\n"
 "QRadioButton {\n"
 "    font-size: 16px;               /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 */\n"
 "    padding: 5px;                  /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
-"	background-color: lightgreen;\n"
+"	background-color: #66CC66;\n"
 "	border-radius: 8px;  /* Bo g\303\263c \304\221\341\273\203 tr\303\264ng m\341\273\201m m\341\272\241i */\n"
 "}\n"
 "QRadioButton::indicator {\n"
@@ -370,17 +396,17 @@ public:
 
         horizontalLayout->addWidget(radioButton_auto);
 
-        radioButton_manual = new QRadioButton(widget1);
+        radioButton_manual = new QRadioButton(layoutWidget1);
         radioButton_manual->setObjectName("radioButton_manual");
         sizePolicy.setHeightForWidth(radioButton_manual->sizePolicy().hasHeightForWidth());
         radioButton_manual->setSizePolicy(sizePolicy);
         radioButton_manual->setMinimumSize(QSize(0, 44));
-        radioButton_manual->setFont(font6);
+        radioButton_manual->setFont(font5);
         radioButton_manual->setStyleSheet(QString::fromUtf8("\n"
 "QRadioButton {\n"
 "    font-size: 16px;               /* K\303\255ch th\306\260\341\273\233c ch\341\273\257 */\n"
 "    padding: 5px;                  /* Kho\341\272\243ng c\303\241ch b\303\252n trong */\n"
-"	background-color: lightgreen;\n"
+"	background-color: #66CC66;\n"
 "	border-radius: 8px;  /* Bo g\303\263c \304\221\341\273\203 tr\303\264ng m\341\273\201m m\341\272\241i */\n"
 "}\n"
 "QRadioButton::indicator {\n"
@@ -397,16 +423,16 @@ public:
         pushButton_sendConfig->setGeometry(QRect(240, 460, 191, 51));
         pushButton_sendConfig->setFont(font2);
         pushButton_sendConfig->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: lightgreen; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    background-color: #5BC0FE; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
 "    color: black;              /* M\303\240u ch\341\273\257 */\n"
 "    border-radius: 8px;        /* Bo g\303\263c */\n"
 "    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
 "    font: bold 20px;           /* Ki\341\273\203u ch\341\273\257 */\n"
 "}\n"
 "\n"
-"QRadioButton:disabled {\n"
-"    color: gray;                   /* M\303\240u ch\341\273\257 khi disable */\n"
-"    background-color: #d3d3d3;     /* M\303\240u n\341\273\201n khi disable */\n"
+"QPushButton:disabled {\n"
+"    color: black;                   /* M\303\240u ch\341\273\257 khi disable */\n"
+"    background-color: lightgray;     /* M\303\240u n\341\273\201n khi disable */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -421,16 +447,16 @@ public:
         pushButton_connectCabinet->setGeometry(QRect(30, 460, 191, 51));
         pushButton_connectCabinet->setFont(font2);
         pushButton_connectCabinet->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: lightgreen; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
+"    background-color: #5BC0FE; /* M\303\240u n\341\273\201n ban \304\221\341\272\247u */\n"
 "    color: black;              /* M\303\240u ch\341\273\257 */\n"
 "    border-radius: 8px;        /* Bo g\303\263c */\n"
 "    padding: 10px;             /* Kho\341\272\243ng c\303\241ch b\303\252n trong n\303\272t */\n"
 "    font: bold 20px;           /* Ki\341\273\203u ch\341\273\257 */\n"
 "}\n"
 "\n"
-"QRadioButton:disabled {\n"
-"    color: gray;                   /* M\303\240u ch\341\273\257 khi disable */\n"
-"    background-color: #d3d3d3;     /* M\303\240u n\341\273\201n khi disable */\n"
+"QPushButton:disabled {\n"
+"    color: black;                   /* M\303\240u ch\341\273\257 khi disable */\n"
+"    background-color: lightgray;     /* M\303\240u n\341\273\201n khi disable */\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
@@ -461,7 +487,7 @@ public:
         retranslateUi(MainWindow);
 
         stackedWidget_connect->setCurrentIndex(1);
-        stackedWidget_auto->setCurrentIndex(1);
+        stackedWidget_auto->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -470,8 +496,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "Qu\341\272\243n l\303\275 t\341\273\247 \304\221i\341\273\207n", nullptr));
-        action_caseMap->setText(QCoreApplication::translate("MainWindow", "B\341\272\243n \304\221\341\273\223 l\341\272\257p \304\221\341\272\267t", nullptr));
-        action_fakeMqtt->setText(QCoreApplication::translate("MainWindow", "Fake mqtt", nullptr));
+        action_caseMap->setText(QCoreApplication::translate("MainWindow", "Phi\303\252n b\341\272\243n ph\341\272\247n m\341\273\201m", nullptr));
+        action_fakeMqtt->setText(QCoreApplication::translate("MainWindow", "Nh\303\240 ph\303\241t tri\341\273\203n", nullptr));
 #if QT_CONFIG(shortcut)
         action_fakeMqtt->setShortcut(QCoreApplication::translate("MainWindow", "Ctrl+T", nullptr));
 #endif // QT_CONFIG(shortcut)
@@ -483,8 +509,8 @@ public:
         label_4->setText(QCoreApplication::translate("MainWindow", "Ch\341\272\277 \304\221\341\273\231 ho\341\272\241t \304\221\341\273\231ng", nullptr));
         label_2->setText(QCoreApplication::translate("MainWindow", "T\303\252n t\341\273\247", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Ng\306\260\341\273\241ng c\303\240nh b\303\241o", nullptr));
-        timeEdit->setDisplayFormat(QCoreApplication::translate("MainWindow", "h:mm", nullptr));
-        timeEdit_2->setDisplayFormat(QCoreApplication::translate("MainWindow", "h:mm", nullptr));
+        timeEdit_timeStart->setDisplayFormat(QCoreApplication::translate("MainWindow", "h:mm", nullptr));
+        timeEdit_timeStop->setDisplayFormat(QCoreApplication::translate("MainWindow", "h:mm", nullptr));
         label_7->setText(QCoreApplication::translate("MainWindow", "\304\221\341\272\277n", nullptr));
         radioButton_on->setText(QCoreApplication::translate("MainWindow", "B\341\272\255t", nullptr));
         radioButton_off->setText(QCoreApplication::translate("MainWindow", "T\341\272\257t", nullptr));

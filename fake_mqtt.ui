@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>894</width>
-    <height>462</height>
+    <width>1161</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,7 +18,7 @@
     <rect>
      <x>90</x>
      <y>20</y>
-     <width>311</width>
+     <width>271</width>
      <height>22</height>
     </rect>
    </property>
@@ -31,7 +31,7 @@
     <rect>
      <x>90</x>
      <y>60</y>
-     <width>311</width>
+     <width>271</width>
      <height>341</height>
     </rect>
    </property>
@@ -47,9 +47,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;state&amp;quot; : 1,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;auto&amp;quot; : 1,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;err_code&amp;quot; : 0,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_a&amp;quot; : 1000,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_b&amp;quot; : 9000,&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_c&amp;quot; : 5000,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_1&amp;quot; : 1000,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_2&amp;quot; : 9000,&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;phase_3&amp;quot; : 5000,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;thread_hold&amp;quot; : 7000,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;start_time&amp;quot; : &amp;quot;6:30&amp;quot;,&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;quot;stop_time&amp;quot; : &amp;quot;18:30&amp;quot;,&lt;/p&gt;
@@ -60,7 +60,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
   <widget class="QPushButton" name="pushButton_publish">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>280</x>
      <y>410</y>
      <width>75</width>
      <height>24</height>
@@ -93,17 +93,101 @@ li.checked::marker { content: &quot;\2612&quot;; }
     </rect>
    </property>
    <property name="text">
-    <string>Message</string>
+    <string>Msg</string>
    </property>
   </widget>
   <widget class="QListWidget" name="listWidget">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>20</y>
-     <width>351</width>
-     <height>381</height>
+     <x>370</x>
+     <y>60</y>
+     <width>281</width>
+     <height>341</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="listWidget_log">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>60</y>
+     <width>471</width>
+     <height>341</height>
+    </rect>
+   </property>
+   <property name="selectionMode">
+    <enum>QAbstractItemView::SelectionMode::SingleSelection</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>20</y>
+     <width>101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Bản tin nhận</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>860</x>
+     <y>20</y>
+     <width>101</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Log ứng dụng</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_clearLog">
+   <property name="geometry">
+    <rect>
+     <x>1050</x>
+     <y>410</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Xóa</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_clearMsg">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>410</y>
+     <width>75</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Xóa</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="checkBox_auto_roll">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>410</y>
+     <width>93</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tự cuộn</string>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="tristate">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

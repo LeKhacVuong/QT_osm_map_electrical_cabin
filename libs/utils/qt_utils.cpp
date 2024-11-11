@@ -8,6 +8,15 @@
 #include <QJsonArray>
 #include <QEventLoop>
 #include "QSettings"
+#include "QCoreApplication"
+
+void qtDelay(uint32_t _mili){
+    auto begin = std::chrono::system_clock::now();
+    while (std::chrono::system_clock::now() - begin < std::chrono::milliseconds(_mili))
+    {
+        QCoreApplication::processEvents();
+    }
+}
 
 void setLineEditSnFomartOnly(QLineEdit* _lineEdit, uint32_t _maxLen){
     QRegularExpression regex("[A-Za-z0-9_@.-]+");

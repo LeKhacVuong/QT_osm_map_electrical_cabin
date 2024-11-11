@@ -45,6 +45,7 @@ HEADERS += \
     libs/mqtt/mqtt_client/sm_mqtt_client.h \
     libs/nanoModbus/nanomodbus.h \
     libs/utils/SerialPort.h \
+    libs/utils/elapsed_timer.h \
     libs/utils/qt_utils.h \
     libs/utils/sm_logger.h \
     mainwindow.h \
